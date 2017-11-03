@@ -1,13 +1,18 @@
 package com.example.dgp.conejonegro;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+/**
+ * Created by alexr on 02/11/2017.
+ */
 
-public class MainActivity extends AppCompatActivity {
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+public class Error extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.error);
+
     }
 }

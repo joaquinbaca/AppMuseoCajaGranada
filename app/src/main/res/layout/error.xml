@@ -13,34 +13,35 @@
         android:layout_marginBottom="34dp"
         android:layout_marginEnd="148dp"
         android:layout_marginStart="148dp"
+        android:layout_marginTop="56dp"
         android:text="Volver"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="142dp"
         android:layout_height="161dp"
-        android:layout_marginBottom="38dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginStart="125dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="121dp"
+        android:layout_marginStart="121dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:srcCompat="@drawable/error_imagen" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="220dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="77dp"
+        android:layout_marginBottom="56dp"
         android:layout_marginEnd="82dp"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="17dp"
         android:text="Parece que ha introducido mal el código, pregunte en recepción por el código de la aplicación para poder acceder."
         app:layout_constraintBottom_toTopOf="@+id/Volver"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,14 +52,43 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="18dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="17dp"
         android:layout_marginEnd="173dp"
         android:layout_marginStart="174dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="18dp"
         android:text="Oops!"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="198dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="49dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="116dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/webapp" />
 
 </android.support.constraint.ConstraintLayout>

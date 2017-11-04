@@ -24,7 +24,7 @@ public class Inicio extends AppCompatActivity {
                 String contenido = mEdit.getText().toString();
                 // en vez de comprobar con "1234", comprobar con key de la bbdd
                 if(contenido.equals("1234"))
-                    startActivity(new Intent(Inicio.this, Idioma.class)); // En vez de ir a idioma directamente, ir a principal si ya se eligió idioma y opciones alguna vez
+                    startActivity(new Intent(Inicio.this, Configuracion.class)); // En vez de ir a idioma directamente, ir a principal si ya se eligió idioma y opciones alguna vez
                 else
                     startActivity(new Intent(Inicio.this, Error.class));
             }

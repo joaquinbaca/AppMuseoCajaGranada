@@ -8,21 +8,24 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
 
 public class Configuracion extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.error);
+        setContentView(R.layout.configuracion);
+        Spinner spinner = (Spinner) findViewById(R.id.spIdioma);
 
-        Button btn = (Button)findViewById(R.id.Volver);
+        String[] items = new String[] { "Español", "Ingles", "Frances", "Italiano" };
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Configuracion.this, Inicio.class));
-            }
-        });
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+
+        spinner.setAdapter(adapter);
+
+
+
     }
 }

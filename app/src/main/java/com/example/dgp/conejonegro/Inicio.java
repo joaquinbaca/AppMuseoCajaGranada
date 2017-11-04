@@ -3,9 +3,9 @@ package com.example.dgp.conejonegro;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.Button;
+
 
 public class Inicio extends AppCompatActivity {
 
@@ -14,25 +14,12 @@ public class Inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
 
-        EditText myTextBox = (EditText) findViewById(R.id.codigo);
-        myTextBox.addTextChangedListener(new TextWatcher() {
+        Button btn = (Button)findViewById(R.id.Enviar);
+
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Intent myIntent;
-                if(s.equals("1234"))
-                    /*myIntent = new Intent(R.layout.inicio.getContext(), idioma.class); //Esto es para cambiar a la pestaña idioma*/
-                else
-                    /*myIntent = new Intent(CurrentActivity.this.getContext(), Error.class);//Esto es para cambiar a la pestaña error*/
-                startActivityForResult(myIntent, 0); // Te envia a la elegida
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void onClick(View v) {
+                startActivity(new Intent(Inicio.this, Error.class));
             }
         });
 

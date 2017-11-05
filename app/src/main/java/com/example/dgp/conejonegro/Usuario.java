@@ -19,10 +19,20 @@ public class Usuario {
         this.lenguajeSimple=lengSimple;
     }
 
+    private void setDatos(String idioma, boolean subtitulos, boolean lengSimple, boolean lengSignos, boolean audio){
+        this.idioma=idioma;
+        this.subtitulos=subtitulos;
+        this.audio=audio;
+        this.lenguajeSignos=lengSignos;
+        this.lenguajeSimple=lengSimple;
+    }
+
     public static void initInstance(String idioma, boolean subtitulos, boolean lengSimple, boolean lengSignos, boolean audio){
         //Este es para cargar por formulario y el otro de clase persistente
         if(instance == null)
             instance = new Usuario(idioma, subtitulos, lengSimple, lengSignos, audio);
+        else
+            instance.setDatos(idioma, subtitulos, lengSimple, lengSignos, audio);
     }
 
     public static Usuario getInstance(){

@@ -34,30 +34,222 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/webapp" />
 
-    <Spinner
-        android:id="@+id/spIdioma"
-        android:layout_width="122dp"
-        android:layout_height="29dp"
-        android:layout_marginBottom="318dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginTop="84dp"
-        android:spinnerMode="dialog"
+    <Button
+        android:id="@+id/botonConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginStart="148dp"
+        android:text="Enviar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="69dp"
-        android:layout_height="28dp"
-        android:layout_marginBottom="319dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="84dp"
-        android:text="Idioma"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/formulario"
+        android:layout_width="378dp"
+        android:layout_height="323dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toTopOf="@+id/botonConfig"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/quintaOpcion"
+            android:layout_width="368dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cuartaOpcion">
+
+            <CheckBox
+                android:id="@+id/Sonido"
+                android:layout_width="37dp"
+                android:layout_height="38dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="69dp"
+                android:layout_marginStart="122dp"
+                android:layout_marginTop="3dp"
+                android:checked="false"
+                android:contentDescription="ActivarSubtitulos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoSubtitulos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="13dp"
+                android:text="Desactivar sonido:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cuartaOpcion"
+            android:layout_width="368dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/terceraOpcion">
+
+            <CheckBox
+                android:id="@+id/lenguajeSignos"
+                android:layout_width="37dp"
+                android:layout_height="38dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="69dp"
+                android:layout_marginStart="71dp"
+                android:layout_marginTop="3dp"
+                android:checked="false"
+                android:contentDescription="ActivarSubtitulos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoSubtitulos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="13dp"
+                android:text="Activar lenguaje de signos:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/terceraOpcion"
+            android:layout_width="368dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/segundaOpcion">
+
+            <CheckBox
+                android:id="@+id/lenguajeSimple"
+                android:layout_width="37dp"
+                android:layout_height="38dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="69dp"
+                android:layout_marginStart="89dp"
+                android:layout_marginTop="3dp"
+                android:checked="false"
+                android:contentDescription="ActivarSubtitulos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoLenguajeSimple"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoLenguajeSimple"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="13dp"
+                android:text="Activar lenguaje simple:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/segundaOpcion"
+            android:layout_width="368dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/primeraOpcion">
+
+            <CheckBox
+                android:id="@+id/Subtitulos"
+                android:layout_width="37dp"
+                android:layout_height="38dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="69dp"
+                android:layout_marginStart="124dp"
+                android:layout_marginTop="3dp"
+                android:checked="false"
+                android:contentDescription="ActivarSubtitulos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoSubtitulos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="13dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="13dp"
+                android:text="Activar subtitulos:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/primeraOpcion"
+            android:layout_width="368dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="36dp">
+
+            <Spinner
+                android:id="@+id/spIdioma"
+                android:layout_width="122dp"
+                android:layout_height="29dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginStart="118dp"
+                android:layout_marginTop="8dp"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textoIdioma"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textoIdioma"
+                android:layout_width="69dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="12dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="9dp"
+                android:text="Idioma:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

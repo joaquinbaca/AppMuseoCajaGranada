@@ -40,7 +40,7 @@ public class Usuario {
     }
 
     public String getIdioma(){
-        return "hola";
+        return idioma;
     }
 
     public boolean getLenguajeSimple(){

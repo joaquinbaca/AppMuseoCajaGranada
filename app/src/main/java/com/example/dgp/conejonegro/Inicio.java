@@ -3,7 +3,6 @@ package com.example.dgp.conejonegro;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.SQLException;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,15 +11,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 
 
 public class Inicio extends AppCompatActivity {
 
-    private Connection conexion;
+    private MuseoBD bd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +30,10 @@ public class Inicio extends AppCompatActivity {
 
         //Conectamos a la base de datos
         try {
-            conectarBasedeDatos();
+            bd = new MuseoBD();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -49,7 +46,7 @@ public class Inicio extends AppCompatActivity {
                 String contenido = mEdit.getText().toString();
                 String clave="";
                 try {
-                    ResultSet rs = hacerConsulta("SELECT * FROM CLAVE");
+                    ResultSet rs = bd.hacerConsulta("SELECT * FROM CLAVE");
                     rs.next();
                     clave = rs.getString("clave");
                     Log.i("hola",clave);
@@ -66,29 +63,16 @@ public class Inicio extends AppCompatActivity {
                         startActivity(new Intent(Inicio.this, Configuracion.class));
                 } else
                     startActivity(new Intent(Inicio.this, Error.class));
+
                 try {
-                    cerrarBasedeDatos();
-                } catch (java.sql.SQLException e) {
+                    bd.cerrarBasedeDatos();
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
                 finish();
             }
         });
-    }
-
-    public void conectarBasedeDatos() throws ClassNotFoundException, java.sql.SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.82/museo", "root", "root");
-    }
-
-    public void cerrarBasedeDatos() throws java.sql.SQLException {
-        conexion.close();
-    }
-
-    public ResultSet hacerConsulta(String consulta) throws java.sql.SQLException {
-        Statement stmt = conexion.createStatement();
-        ResultSet rs = stmt.executeQuery(consulta);
-        return rs;
     }
 
 }

@@ -13,10 +13,15 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
+    private String ip = "192.168.1.129";
+    private String puerto = "3307";
+    private String nombreBD = "museo";
+    private String user = "root";
+    private String password = "root";
 
     public  ConexionBD() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.82/museo", "root", "root");
+        conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD, user, password);
     }
 
     public ResultSet hacerConsulta(String consulta) throws java.sql.SQLException {

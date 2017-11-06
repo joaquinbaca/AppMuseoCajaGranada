@@ -3,6 +3,7 @@ package com.example.dgp.conejonegro;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.SQLException;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,13 +12,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class Inicio extends AppCompatActivity {
 
-    private MuseoBD bd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +31,8 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.inicio);
 
 
-        //Conectamos a la base de datos
-        try {
-            bd = new MuseoBD();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+
 
         Button btn = (Button) findViewById(R.id.Enviar);
 
@@ -45,11 +42,24 @@ public class Inicio extends AppCompatActivity {
                 EditText mEdit = (EditText) findViewById(R.id.codigo);
                 String contenido = mEdit.getText().toString();
                 String clave="";
+
+                //Crea objeto conexion a BD
+                ConexionBD conexion = null;
+
+                //Con el constructor se conecta automaticamente a la BD
                 try {
-                    ResultSet rs = bd.hacerConsulta("SELECT * FROM CLAVE");
+                    conexion = new ConexionBD();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (java.sql.SQLException e) {
+                    e.printStackTrace();
+                }
+
+                //Consulta
+                try {
+                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM museo");
                     rs.next();
                     clave = rs.getString("clave");
-                    Log.i("hola",clave);
                 } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
@@ -63,16 +73,16 @@ public class Inicio extends AppCompatActivity {
                         startActivity(new Intent(Inicio.this, Configuracion.class));
                 } else
                     startActivity(new Intent(Inicio.this, Error.class));
-
                 try {
-                    bd.cerrarBasedeDatos();
-                } catch (SQLException e) {
+                    conexion.cerrarBasedeDatos();
+                } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
-
                 finish();
             }
         });
     }
+
+
 
 }

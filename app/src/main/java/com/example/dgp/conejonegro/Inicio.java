@@ -20,7 +20,7 @@ import java.sql.Statement;
 
 public class Inicio extends AppCompatActivity {
 
-    private Connection conexion;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +31,8 @@ public class Inicio extends AppCompatActivity {
         setContentView(R.layout.inicio);
 
 
-        //Conectamos a la base de datos
-        try {
-            conectarBasedeDatos();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
+
+
 
         Button btn = (Button) findViewById(R.id.Enviar);
 
@@ -48,11 +42,24 @@ public class Inicio extends AppCompatActivity {
                 EditText mEdit = (EditText) findViewById(R.id.codigo);
                 String contenido = mEdit.getText().toString();
                 String clave="";
+
+                //Crea objeto conexion a BD
+                ConexionBD conexion = null;
+
+                //Con el constructor se conecta automaticamente a la BD
                 try {
-                    ResultSet rs = hacerConsulta("SELECT * FROM CLAVE");
+                    conexion = new ConexionBD();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (java.sql.SQLException e) {
+                    e.printStackTrace();
+                }
+
+                //Consulta
+                try {
+                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM museo");
                     rs.next();
                     clave = rs.getString("clave");
-                    Log.i("hola",clave);
                 } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
@@ -67,7 +74,7 @@ public class Inicio extends AppCompatActivity {
                 } else
                     startActivity(new Intent(Inicio.this, Error.class));
                 try {
-                    cerrarBasedeDatos();
+                    conexion.cerrarBasedeDatos();
                 } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
@@ -76,19 +83,6 @@ public class Inicio extends AppCompatActivity {
         });
     }
 
-    public void conectarBasedeDatos() throws ClassNotFoundException, java.sql.SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://192.168.1.82/museo", "root", "root");
-    }
 
-    public void cerrarBasedeDatos() throws java.sql.SQLException {
-        conexion.close();
-    }
-
-    public ResultSet hacerConsulta(String consulta) throws java.sql.SQLException {
-        Statement stmt = conexion.createStatement();
-        ResultSet rs = stmt.executeQuery(consulta);
-        return rs;
-    }
 
 }

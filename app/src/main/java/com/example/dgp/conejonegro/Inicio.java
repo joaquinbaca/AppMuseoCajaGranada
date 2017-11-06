@@ -57,7 +57,7 @@ public class Inicio extends AppCompatActivity {
 
                 //Consulta
                 try {
-                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM museo");
+                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM clave");
                     rs.next();
                     clave = rs.getString("clave");
                 } catch (java.sql.SQLException e) {

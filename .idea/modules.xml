@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\alexr\AndroidStudioProjects\conejoNegro\Museo.iml" filepath="C:\Users\alexr\AndroidStudioProjects\conejoNegro\Museo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Alvaro\Desktop\Universidad\DGP\Android\Museo\app\app.iml" filepath="C:\Users\Alvaro\Desktop\Universidad\DGP\Android\Museo\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/conejoNegro.iml" filepath="$PROJECT_DIR$/conejoNegro.iml" />
-      <module fileurl="file://C:\Users\Alvaro\Desktop\Universidad\DGP\Android\Museo\conejoNegro.iml" filepath="C:\Users\Alvaro\Desktop\Universidad\DGP\Android\Museo\conejoNegro.iml" />
       <module fileurl="file://$PROJECT_DIR$/mysql-connector-java-3.0.17-ga-bin/mysql-connector-java-3.0.17-ga-bin.iml" filepath="$PROJECT_DIR$/mysql-connector-java-3.0.17-ga-bin/mysql-connector-java-3.0.17-ga-bin.iml" />
     </modules>
   </component>

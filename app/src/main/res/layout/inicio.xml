@@ -13,15 +13,13 @@
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="85dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="139dp"
         android:ems="10"
         android:hint="Escribe el código"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/Enviar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Enviar"
@@ -42,40 +40,50 @@
         android:layout_marginBottom="120dp"
         android:layout_marginEnd="127dp"
         android:layout_marginStart="127dp"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="59dp"
         android:text="Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."
         app:layout_constraintBottom_toTopOf="@+id/codigo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="198dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="49dp"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/logo" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="116dp"
-        android:layout_height="64dp"
-        android:layout_marginBottom="48dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="377dp"
+        android:layout_height="108dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/webapp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="116dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/webapp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="198dp"
+            android:layout_height="64dp"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

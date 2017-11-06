@@ -13,24 +13,40 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 public class Configuracion extends AppCompatActivity {
 
     private String idioma = " ";
     private Spinner spinner;
+    ConexionBD conexion = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuracion);
         spinner = (Spinner) findViewById(R.id.spIdioma);
+        ArrayList<String> idiomas = new ArrayList<String>();
 
-        String[] items = new String[] { "Español", "Ingles", "Frances", "Italiano" };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        try {
+            conexion = new ConexionBD();
+            ResultSet rs = conexion.hacerConsulta("SELECT * FROM idiomas");
+            while(rs.next()){
+                idiomas.add(rs.getString("idioma"));
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, idiomas);
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -47,13 +63,18 @@ public class Configuracion extends AppCompatActivity {
 
         comprobarConfiguracion();
 
-        Button btn = (Button)findViewById(R.id.botonConfig);
+        Button btn = (Button)findViewById(R.id.config);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Guardar en la clase de contenidos persistentes
                 crearConfiguracion();
                 startActivity(new Intent(Configuracion.this, Principal.class));
+                try {
+                    conexion.cerrarBasedeDatos();
+                } catch (java.sql.SQLException e) {
+                    e.printStackTrace();
+                }
                 finish();
             }
         });

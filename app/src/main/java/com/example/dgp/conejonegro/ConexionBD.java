@@ -13,11 +13,11 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
-    private String ip = "0.tcp.ngrok.io";
-    private String puerto = "11008";
+    private String ip = "79.152.254.166";
+    private String puerto = "3306";
     private String nombreBD = "museo";
-    private String user = "root";
-    private String password = "";
+    private String user = "usuario";
+    private String password = "123456";
 
     public  ConexionBD() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");

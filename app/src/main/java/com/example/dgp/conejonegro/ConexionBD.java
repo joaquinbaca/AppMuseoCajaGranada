@@ -14,7 +14,7 @@ public class ConexionBD {
 
     private Connection conexion;
     private String ip = "0.tcp.ngrok.io";
-    private String puerto = "15325";
+    private String puerto = "11008";
     private String nombreBD = "museo";
     private String user = "root";
     private String password = "";

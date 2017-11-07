@@ -19,13 +19,13 @@
         <Button
             android:id="@+id/config"
             android:layout_width="54dp"
-            android:layout_height="48dp"
+            android:layout_height="53dp"
             android:layout_marginEnd="164dp"
             android:layout_marginStart="163dp"
             android:background="@drawable/config"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="-5dp" />
 
         <TextView
             android:id="@+id/TextoConfig"
@@ -34,7 +34,7 @@
             android:layout_marginBottom="6dp"
             android:layout_marginEnd="147dp"
             android:layout_marginStart="147dp"
-            android:text="Configuracion"
+            android:text="Configuración"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

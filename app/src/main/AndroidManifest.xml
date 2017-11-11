@@ -25,6 +25,9 @@
         <activity android:name=".lector">
         </activity>
 
+        <activity android:name=".Elemento">
+        </activity>
+
         <activity android:name=".Configuracion">
         </activity>
 

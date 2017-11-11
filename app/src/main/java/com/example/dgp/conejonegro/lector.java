@@ -12,7 +12,9 @@ package com.example.dgp.conejonegro;
         import android.util.SparseArray;
         import android.view.SurfaceHolder;
         import android.view.SurfaceView;
+        import android.view.View;
         import android.webkit.URLUtil;
+        import android.widget.Button;
 
         import com.google.android.gms.vision.CameraSource;
         import com.google.android.gms.vision.Detector;
@@ -25,6 +27,7 @@ public class lector extends AppCompatActivity{
     private SurfaceView cameraView;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     //chicos aqui se guarda el string //
+    private Elemento elemento = new Elemento();
     private String token = "";
     /////------------///
     private String tokenanterior = "";
@@ -36,6 +39,14 @@ public class lector extends AppCompatActivity{
 
         cameraView = (SurfaceView) findViewById(R.id.camera_view);
         initQR();
+        Button btn = (Button)findViewById(R.id.VolverQR);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(lector.this, Inicio.class));
+            }
+        });
     }
     public void initQR() {
 
@@ -120,11 +131,14 @@ public class lector extends AppCompatActivity{
                         } else {
                             // comparte en otras apps
                             //aqui seria llamar al layaut salas no??
+                           // elemento.cargarIdporQr(token);
+                            startActivity(new Intent(lector.this, Elemento.class));
+                            /*
                             Intent shareIntent = new Intent();
                             shareIntent.setAction(Intent.ACTION_SEND);
                             shareIntent.putExtra(Intent.EXTRA_TEXT, token);
                             shareIntent.setType("text/plain");
-                            startActivity(shareIntent);
+                            startActivity(shareIntent);*/
                         }
 
                         new Thread(new Runnable() {

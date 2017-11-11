@@ -18,11 +18,20 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.principal);
 
         Button btn = (Button)findViewById(R.id.config);
+        Button bt2 = (Button)findViewById(R.id.QR);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Principal.this, Configuracion.class));
+
+            }
+        });
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Principal.this, lector.class));
+
             }
         });
     }

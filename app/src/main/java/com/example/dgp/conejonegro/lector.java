@@ -45,7 +45,7 @@ public class lector extends AppCompatActivity{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(lector.this, Inicio.class));
+                startActivity(new Intent(lector.this, Principal.class));
             }
         });
     }

@@ -119,7 +119,7 @@ public class lector extends AppCompatActivity{
                             startActivity(browserIntent);
                         } else {
                             // comparte en otras apps
-                            //aqui seria llamar al layaut salas no?
+                            //aqui seria llamar al layaut salas no??
                             Intent shareIntent = new Intent();
                             shareIntent.setAction(Intent.ACTION_SEND);
                             shareIntent.putExtra(Intent.EXTRA_TEXT, token);

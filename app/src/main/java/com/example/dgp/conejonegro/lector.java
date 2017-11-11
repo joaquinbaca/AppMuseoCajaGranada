@@ -32,6 +32,7 @@ public class lector extends AppCompatActivity{
     /////------------///
     private String tokenanterior = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,23 +124,14 @@ public class lector extends AppCompatActivity{
                         // guardamos el ultimo token proceado
                         tokenanterior = token;
                         Log.i("token", token);
-                        //esto lo quitamos///
-                        if (URLUtil.isValidUrl(token)) {
-                            // si es una URL valida abre el navegador
-                            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(token));
-                            startActivity(browserIntent);
-                        } else {
-                            // comparte en otras apps
-                            //aqui seria llamar al layaut salas no??
-                           // elemento.cargarIdporQr(token);
-                            startActivity(new Intent(lector.this, Elemento.class));
-                            /*
-                            Intent shareIntent = new Intent();
+
+
+                            Intent shareIntent = new Intent(lector.this, elemento.getClass());
                             shareIntent.setAction(Intent.ACTION_SEND);
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, token);
+                            shareIntent.putExtra("id", token);
                             shareIntent.setType("text/plain");
-                            startActivity(shareIntent);*/
-                        }
+                            startActivity(shareIntent);
+
 
                         new Thread(new Runnable() {
                             public void run() {

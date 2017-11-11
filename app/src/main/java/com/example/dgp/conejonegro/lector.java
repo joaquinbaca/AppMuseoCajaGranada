@@ -24,7 +24,9 @@ public class lector extends AppCompatActivity{
     private CameraSource cameraSource;
     private SurfaceView cameraView;
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
+    //chicos aqui se guarda el string //
     private String token = "";
+    /////------------///
     private String tokenanterior = "";
 
     @Override
@@ -110,13 +112,14 @@ public class lector extends AppCompatActivity{
                         // guardamos el ultimo token proceado
                         tokenanterior = token;
                         Log.i("token", token);
-
+                        //esto lo quitamos///
                         if (URLUtil.isValidUrl(token)) {
                             // si es una URL valida abre el navegador
                             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(token));
                             startActivity(browserIntent);
                         } else {
                             // comparte en otras apps
+                            //aqui seria llamar al layaut salas no?
                             Intent shareIntent = new Intent();
                             shareIntent.setAction(Intent.ACTION_SEND);
                             shareIntent.putExtra(Intent.EXTRA_TEXT, token);

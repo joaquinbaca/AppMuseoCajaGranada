@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -70,6 +71,15 @@ public class Configuracion extends AppCompatActivity {
             public void onClick(View v) {
                 //Guardar en la clase de contenidos persistentes
                 crearConfiguracion();
+
+                try {
+                    actualizarIdioma();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 startActivity(new Intent(Configuracion.this, Principal.class));
                 try {
                     conexion.cerrarBasedeDatos();
@@ -110,5 +120,24 @@ public class Configuracion extends AppCompatActivity {
             ((CheckBox)findViewById(R.id.lenguajeSignos)).setChecked(usuario.getLenguajeSignos());
             ((CheckBox)findViewById(R.id.Sonido)).setChecked(usuario.getSonido());
         }
+    }
+
+    public void actualizarIdioma() throws SQLException, ClassNotFoundException {
+
+        SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = config.edit();
+
+        ConexionBD conexion = null;
+        conexion = new ConexionBD();
+        Log.d("HOLAXD-1", idioma);
+        Log.d("consulta", "SELECT  Sitio, "+idioma+" FROM traducciones");
+        ResultSet rs = conexion.hacerConsulta("SELECT  Sitio, "+idioma+" FROM traducciones");
+
+        while(rs.next()){
+            editor.putString(rs.getString("Sitio"), rs.getString(idioma));
+            Log.d("HOLAXD", rs.getString("Sitio"));
+            Log.d("HOLAXD", rs.getString(idioma));
+        }
+        editor.commit();
     }
 }

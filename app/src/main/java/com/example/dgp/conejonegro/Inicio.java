@@ -22,6 +22,9 @@ public class Inicio extends AppCompatActivity {
 
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
-    private String ip = "79.152.254.166";
+    private String ip = "81.34.245.135";
     private String puerto = "3306";
     private String nombreBD = "museo";
     private String user = "usuario";
@@ -21,7 +21,7 @@ public class ConexionBD {
 
     public  ConexionBD() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD, user, password);
+        conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD + "?useUnicode=true&characterEncoding=utf-8", user, password);
     }
 
     public ResultSet hacerConsulta(String consulta) throws java.sql.SQLException {

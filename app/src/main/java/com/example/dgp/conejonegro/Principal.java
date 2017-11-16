@@ -28,7 +28,7 @@ public class Principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Principal.this, lector.class));
-
+                finish();
             }
         });
 
@@ -36,7 +36,7 @@ public class Principal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Principal.this, Configuracion.class));
-
+                finish();
             }
         });
     }

@@ -3,28 +3,21 @@ package com.example.dgp.conejonegro;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.SQLException;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
 
 
 public class Inicio extends AppCompatActivity {
 
-
-
-
-
+    Button button;
+    EditText mEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,24 +27,12 @@ public class Inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
 
-        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
-
-        TextView mTextView = (TextView)findViewById(R.id.InicioTexto);
-        mTextView.setText(config.getString("InicioTexto", "Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."));
-
-        TextView mTextView2 = (TextView)findViewById(R.id.codigo);
-        mTextView2.setHint(config.getString("InicioCodigo", "Escribe el código"));
-
-        Button button = (Button)findViewById(R.id.Enviar);
-        button.setText(config.getString("InicioBotonEnviar", "ENVIAR"));
-
-
-
+        traducirInterfaz();
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText mEdit = (EditText) findViewById(R.id.codigo);
+                mEdit = (EditText) findViewById(R.id.inicioEditText);
                 String contenido = mEdit.getText().toString();
                 String clave="";
 
@@ -93,6 +74,19 @@ public class Inicio extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void traducirInterfaz(){
+        SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.inicioTexto);
+        mTextView.setText(config.getString("InicioInicioTexto", "Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."));
+
+        mEdit = (EditText) findViewById(R.id.inicioEditText);
+        mEdit.setHint(config.getString("InicioInicioEditText", "Escribe el código"));
+
+        button = (Button)findViewById(R.id.inicioBotonEnviar);
+        button.setText(config.getString("InicioInicioBotonEnviar", "ENVIAR"));
     }
 
 

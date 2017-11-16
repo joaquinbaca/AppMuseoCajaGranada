@@ -49,11 +49,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintStart_toEndOf="@+id/textoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoSubtitulos"
+                android:id="@+id/textoSonido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -88,11 +88,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintStart_toEndOf="@+id/textoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoSubtitulos"
+                android:id="@+id/textoLenguajeSignos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -166,7 +166,7 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSubtitulos"
+                app:layout_constraintStart_toEndOf="@+id/textoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView

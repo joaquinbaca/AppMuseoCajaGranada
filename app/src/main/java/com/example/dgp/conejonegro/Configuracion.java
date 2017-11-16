@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +33,9 @@ public class Configuracion extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuracion);
+
+        actualizarPantalla();
+
         spinner = (Spinner) findViewById(R.id.spIdioma);
         ArrayList<String> idiomas = new ArrayList<String>();
 
@@ -55,6 +59,14 @@ public class Configuracion extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 idioma = parent.getItemAtPosition(position).toString();
+                try {
+                    actualizarIdioma(conexion);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                actualizarPantalla();
             }
 
             @Override
@@ -72,13 +84,6 @@ public class Configuracion extends AppCompatActivity {
                 //Guardar en la clase de contenidos persistentes
                 crearConfiguracion();
 
-                try {
-                    actualizarIdioma();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
 
                 startActivity(new Intent(Configuracion.this, Principal.class));
                 try {
@@ -122,22 +127,38 @@ public class Configuracion extends AppCompatActivity {
         }
     }
 
-    public void actualizarIdioma() throws SQLException, ClassNotFoundException {
+    public void actualizarIdioma(ConexionBD conexion) throws SQLException, ClassNotFoundException {
 
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = config.edit();
 
-        ConexionBD conexion = null;
-        conexion = new ConexionBD();
-        Log.d("HOLAXD-1", idioma);
-        Log.d("consulta", "SELECT  Sitio, "+idioma+" FROM traducciones");
         ResultSet rs = conexion.hacerConsulta("SELECT  Sitio, "+idioma+" FROM traducciones");
 
         while(rs.next()){
             editor.putString(rs.getString("Sitio"), rs.getString(idioma));
-            Log.d("HOLAXD", rs.getString("Sitio"));
-            Log.d("HOLAXD", rs.getString(idioma));
         }
         editor.commit();
+    }
+
+    public void actualizarPantalla(){
+        SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.textoIdioma);
+        mTextView.setText(config.getString("ConfiguracionTextoIdioma", "Idioma"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.textoSubtitulos);
+        mTextView2.setText(config.getString("ConfiguracionTextoSubtitulos", "Activar subtítulos"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.textoLenguajeSimple);
+        mTextView3.setText(config.getString("ConfiguracionTextoLenguajeSimple", "Activar lenguaje simple"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.textoLenguajeSignos);
+        mTextView4.setText(config.getString("ConfiguracionTextoLenguajeSignos", "Activar lenguaje de signos"));
+
+        TextView mTextView5 = (TextView)findViewById(R.id.textoSonido);
+        mTextView5.setText(config.getString("ConfiguracionTextoSonido", "Activar sonido"));
+
+        Button button = (Button)findViewById(R.id.config);
+        button.setText(config.getString("ConfiguracionBotonVolver", "VOLVER"));
     }
 }

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,13 +34,21 @@ public class Inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inicio);
 
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.InicioTexto);
+        mTextView.setText(config.getString("InicioTexto", "Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.codigo);
+        mTextView2.setHint(config.getString("InicioCodigo", "Escribe el código"));
+
+        Button button = (Button)findViewById(R.id.Enviar);
+        button.setText(config.getString("InicioBotonEnviar", "ENVIAR"));
 
 
 
 
-        Button btn = (Button) findViewById(R.id.Enviar);
-
-        btn.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText mEdit = (EditText) findViewById(R.id.codigo);

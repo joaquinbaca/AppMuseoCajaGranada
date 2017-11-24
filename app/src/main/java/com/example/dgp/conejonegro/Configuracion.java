@@ -41,9 +41,9 @@ public class Configuracion extends AppCompatActivity {
 
         try {
             conexion = new ConexionBD();
-            ResultSet rs = conexion.hacerConsulta("SELECT * FROM idiomas");
+            ResultSet rs = conexion.hacerConsulta("SELECT * FROM IDIOMA");
             while(rs.next()){
-                idiomas.add(rs.getString("idioma"));
+                idiomas.add(rs.getString("nombre"));
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -32,6 +32,7 @@ public class Error extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Error.this, Inicio.class));
+                finish();
             }
         });
     }

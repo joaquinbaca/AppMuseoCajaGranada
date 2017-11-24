@@ -46,6 +46,7 @@ public class lector extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(lector.this, Principal.class));
+                finish();
             }
         });
     }
@@ -131,7 +132,7 @@ public class lector extends AppCompatActivity{
                             shareIntent.putExtra("id", token);
                             shareIntent.setType("text/plain");
                             startActivity(shareIntent);
-
+                            finish();
 
                         new Thread(new Runnable() {
                             public void run() {

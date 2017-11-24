@@ -21,7 +21,7 @@ public class ConexionBD {
 
     public  ConexionBD() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.jdbc.Driver");
-        conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD + "?useUnicode=true&characterEncoding=utf-8", user, password);
+        conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD, user, password);
     }
 
     public ResultSet hacerConsulta(String consulta) throws java.sql.SQLException {

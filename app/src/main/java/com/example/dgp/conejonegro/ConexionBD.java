@@ -13,9 +13,9 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
-    private String ip = "81.34.245.135";
+    private String ip = "88.20.58.236";
     private String puerto = "3306";
-    private String nombreBD = "museo";
+    private String nombreBD = "Museo";
     private String user = "usuario";
     private String password = "123456";
 

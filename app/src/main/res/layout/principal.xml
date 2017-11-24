@@ -17,9 +17,9 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/config"
+            android:id="@+id/configuracionBoton"
             android:layout_width="54dp"
-            android:layout_height="53dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="164dp"
             android:layout_marginStart="163dp"
             android:background="@drawable/config"
@@ -28,7 +28,7 @@
             tools:layout_editor_absoluteY="-5dp" />
 
         <TextView
-            android:id="@+id/TextoConfig"
+            android:id="@+id/principalTexto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="6dp"
@@ -38,7 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/config" />
+            app:layout_constraintTop_toBottomOf="@+id/configuracionBoton" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         <Button
-            android:id="@+id/Salas"
+            android:id="@+id/principalBotonSalas"
             android:layout_width="210dp"
             android:layout_height="45dp"
             android:layout_marginBottom="16dp"
@@ -62,25 +62,25 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="39dp"
             android:text="ver salas"
-            app:layout_constraintBottom_toTopOf="@+id/QR"
+            app:layout_constraintBottom_toTopOf="@+id/principalBotonQR"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/QR"
+            android:id="@+id/principalBotonQR"
             android:layout_width="210dp"
             android:layout_height="45dp"
             android:layout_marginBottom="18dp"
             android:layout_marginEnd="80dp"
             android:layout_marginStart="80dp"
             android:text="Escanear QR"
-            app:layout_constraintBottom_toTopOf="@+id/Rutas"
+            app:layout_constraintBottom_toTopOf="@+id/principalBotonRutas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/Rutas"
+            android:id="@+id/principalBotonRutas"
             android:layout_width="210dp"
             android:layout_height="45dp"
             android:layout_marginBottom="19dp"

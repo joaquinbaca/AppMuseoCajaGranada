@@ -7,7 +7,7 @@
     tools:context="com.example.dgp.conejonegro.Inicio">
 
     <EditText
-        android:id="@+id/inicioEditText"
+        android:id="@+id/inicioCodigo"
         android:layout_width="222dp"
         android:layout_height="44dp"
         android:layout_marginBottom="11dp"
@@ -16,13 +16,13 @@
         android:ems="10"
         android:hint="Escribe el código"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/inicioBotonEnviar"
+        app:layout_constraintBottom_toTopOf="@+id/inicioBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/inicioBotonEnviar"
+        android:id="@+id/inicioBoton"
         android:layout_width="201dp"
         android:layout_height="36dp"
         android:layout_marginBottom="34dp"
@@ -42,7 +42,7 @@
         android:layout_marginStart="127dp"
         android:layout_marginTop="59dp"
         android:text="Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."
-        app:layout_constraintBottom_toTopOf="@+id/inicioEditText"
+        app:layout_constraintBottom_toTopOf="@+id/inicioCodigo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />

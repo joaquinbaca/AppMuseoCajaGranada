@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/config"
+        android:id="@+id/configuracionBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
@@ -22,7 +22,7 @@
         android:layout_width="378dp"
         android:layout_height="323dp"
         android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/config"
+        app:layout_constraintBottom_toTopOf="@+id/configuracionBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -49,11 +49,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSonido"
+                app:layout_constraintStart_toEndOf="@+id/configuracionTextoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoSonido"
+                android:id="@+id/configuracionTextoSonido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -88,11 +88,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSonido"
+                app:layout_constraintStart_toEndOf="@+id/configuracionTextoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoLenguajeSignos"
+                android:id="@+id/configuracionTextoLenguajeSignos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -127,11 +127,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoLenguajeSimple"
+                app:layout_constraintStart_toEndOf="@+id/configuracionTextoLenguajeSimple"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoLenguajeSimple"
+                android:id="@+id/configuracionTextoLenguajeSimple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -166,11 +166,11 @@
                 android:contentDescription="ActivarSubtitulos"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoSonido"
+                app:layout_constraintStart_toEndOf="@+id/configuracionTextoSonido"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoSubtitulos"
+                android:id="@+id/configuracionTextoSubtitulos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="13dp"
@@ -204,11 +204,11 @@
                 android:spinnerMode="dialog"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textoIdioma"
+                app:layout_constraintStart_toEndOf="@+id/configuracionTextoIdioma"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textoIdioma"
+                android:id="@+id/configuracionTextoIdioma"
                 android:layout_width="69dp"
                 android:layout_height="24dp"
                 android:layout_marginBottom="12dp"

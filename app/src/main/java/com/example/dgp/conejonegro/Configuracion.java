@@ -77,7 +77,7 @@ public class Configuracion extends AppCompatActivity {
 
         comprobarConfiguracion();
 
-        Button btn = (Button)findViewById(R.id.config);
+        Button btn = (Button)findViewById(R.id.configuracionBoton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,11 +131,13 @@ public class Configuracion extends AppCompatActivity {
 
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = config.edit();
-
-        ResultSet rs = conexion.hacerConsulta("SELECT  Sitio, "+idioma+" FROM traducciones");
+        ResultSet rs = conexion.hacerConsulta("SELECT  idIdioma FROM IDIOMA WHERE nombre = '" + idioma + "'" );
+        rs.next();
+        int id_idioma = rs.getInt("idIdioma");
+        rs = conexion.hacerConsulta("SELECT  nombreElemento, traduccion FROM INTERFAZANDROID WHERE idIdioma = '" + id_idioma + "'");
 
         while(rs.next()){
-            editor.putString(rs.getString("Sitio"), rs.getString(idioma));
+            editor.putString(rs.getString("nombreElemento"), rs.getString("traduccion"));
         }
         editor.commit();
     }
@@ -143,22 +145,22 @@ public class Configuracion extends AppCompatActivity {
     public void actualizarPantalla(){
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
 
-        TextView mTextView = (TextView)findViewById(R.id.textoIdioma);
-        mTextView.setText(config.getString("ConfiguracionTextoIdioma", "Idioma"));
+        TextView mTextView = (TextView)findViewById(R.id.configuracionTextoIdioma);
+        mTextView.setText(config.getString("configuracionTextoIdioma", "Idioma"));
 
-        TextView mTextView2 = (TextView)findViewById(R.id.textoSubtitulos);
-        mTextView2.setText(config.getString("ConfiguracionTextoSubtitulos", "Activar subtítulos"));
+        TextView mTextView2 = (TextView)findViewById(R.id.configuracionTextoSubtitulos);
+        mTextView2.setText(config.getString("configuracionTextoSubtitulos", "Activar subtítulos"));
 
-        TextView mTextView3 = (TextView)findViewById(R.id.textoLenguajeSimple);
-        mTextView3.setText(config.getString("ConfiguracionTextoLenguajeSimple", "Activar lenguaje simple"));
+        TextView mTextView3 = (TextView)findViewById(R.id.configuracionTextoLenguajeSimple);
+        mTextView3.setText(config.getString("configuracionTextoLenguajeSimple", "Activar lenguaje simple"));
 
-        TextView mTextView4 = (TextView)findViewById(R.id.textoLenguajeSignos);
-        mTextView4.setText(config.getString("ConfiguracionTextoLenguajeSignos", "Activar lenguaje de signos"));
+        TextView mTextView4 = (TextView)findViewById(R.id.configuracionTextoLenguajeSignos);
+        mTextView4.setText(config.getString("configuracionTextoLenguajeSignos", "Activar lenguaje de signos"));
 
-        TextView mTextView5 = (TextView)findViewById(R.id.textoSonido);
-        mTextView5.setText(config.getString("ConfiguracionTextoSonido", "Activar sonido"));
+        TextView mTextView5 = (TextView)findViewById(R.id.configuracionTextoSonido);
+        mTextView5.setText(config.getString("configuracionTextoSonido", "Activar sonido"));
 
-        Button button = (Button)findViewById(R.id.config);
-        button.setText(config.getString("ConfiguracionBotonVolver", "VOLVER"));
+        Button button = (Button)findViewById(R.id.configuracionBoton);
+        button.setText(config.getString("configuracionBoton", "VOLVER"));
     }
 }

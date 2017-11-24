@@ -3,7 +3,6 @@ package com.example.dgp.conejonegro;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,7 +31,7 @@ public class Inicio extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mEdit = (EditText) findViewById(R.id.inicioEditText);
+                mEdit = (EditText) findViewById(R.id.inicioCodigo);
                 String contenido = mEdit.getText().toString();
                 String clave="";
 
@@ -50,9 +49,9 @@ public class Inicio extends AppCompatActivity {
 
                 //Consulta
                 try {
-                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM clave");
+                    ResultSet rs = conexion.hacerConsulta("SELECT * FROM CLAVE");
                     rs.next();
-                    clave = rs.getString("clave");
+                    clave = rs.getString("valor");
                 } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
@@ -80,13 +79,13 @@ public class Inicio extends AppCompatActivity {
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
 
         TextView mTextView = (TextView)findViewById(R.id.inicioTexto);
-        mTextView.setText(config.getString("InicioInicioTexto", "Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."));
+        mTextView.setText(config.getString("inicioTexto", "Bienvenidos al museo Caja Granada, pregunta por el código de la aplicación en recepción para poder acceder."));
 
-        mEdit = (EditText) findViewById(R.id.inicioEditText);
-        mEdit.setHint(config.getString("InicioInicioEditText", "Escribe el código"));
+        mEdit = (EditText) findViewById(R.id.inicioCodigo);
+        mEdit.setHint(config.getString("inicioCodigo", "Escribe el código"));
 
-        button = (Button)findViewById(R.id.inicioBotonEnviar);
-        button.setText(config.getString("InicioInicioBotonEnviar", "ENVIAR"));
+        button = (Button)findViewById(R.id.inicioBoton);
+        button.setText(config.getString("inicioBoton", "ENVIAR"));
     }
 
 

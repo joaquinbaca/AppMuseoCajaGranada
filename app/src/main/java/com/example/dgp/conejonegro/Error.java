@@ -22,11 +22,11 @@ public class Error extends AppCompatActivity {
 
         SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
 
-        TextView mTextView = (TextView)findViewById(R.id.textView2);
-        mTextView.setText(config.getString("ErrorTexto", "Parece que ha introducido mal el código, pregunte en recepción por el código de la aplicación para poder acceder."));
+        TextView mTextView = (TextView)findViewById(R.id.errorTexto);
+        mTextView.setText(config.getString("errorTexto", "Parece que ha introducido mal el código, pregunte en recepción por el código de la aplicación para poder acceder."));
 
-        Button button = (Button)findViewById(R.id.Volver);
-        button.setText(config.getString("ErrorBotonVolver", "VOLVER"));
+        Button button = (Button)findViewById(R.id.errorBoton);
+        button.setText(config.getString("errorBoton", "VOLVER"));
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/Volver"
+        android:id="@+id/errorBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -35,7 +35,7 @@
         app:srcCompat="@drawable/error_imagen" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/errorTexto"
         android:layout_width="220dp"
         android:layout_height="65dp"
         android:layout_marginBottom="56dp"
@@ -43,7 +43,7 @@
         android:layout_marginStart="82dp"
         android:layout_marginTop="17dp"
         android:text="Parece que ha introducido mal el código, pregunte en recepción por el código de la aplicación para poder acceder."
-        app:layout_constraintBottom_toTopOf="@+id/Volver"
+        app:layout_constraintBottom_toTopOf="@+id/errorBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -57,7 +57,7 @@
         android:layout_marginStart="174dp"
         android:layout_marginTop="18dp"
         android:text="Oops!"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/errorTexto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />

@@ -25,7 +25,7 @@
         <activity android:name=".lector">
         </activity>
 
-        <activity android:name=".Elemento">
+        <activity android:name=".verElemento">
         </activity>
 
         <activity android:name=".Configuracion">

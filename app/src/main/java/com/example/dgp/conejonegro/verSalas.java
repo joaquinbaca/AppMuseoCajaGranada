@@ -27,17 +27,26 @@ public class verSalas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listasalas);
 
-        list = (ListView) findViewById(R.id.listView);
+       /* list = (ListView) findViewById(R.id.listView);
         listItems = new ArrayList<String>();
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         list.setAdapter(adapter);
 
-        /*listItems.add("hola");
+        listItems.add("hola");
         adapter.notifyDataSetChanged();
 
         listItems.add("alex");
         adapter.notifyDataSetChanged();
         */
+
+        SalasFragment leadsFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
+
+        if (leadsFragment == null) {
+            leadsFragment = SalasFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.salas_container, leadsFragment).commit();
+        }
+
+
         salas = new ArrayList<Sala>();
         try {
             conexion = new ConexionBD();
@@ -51,8 +60,9 @@ public class verSalas extends AppCompatActivity {
                 rs2.next();
                 String nombre = rs2.getString("nombre");
 
-                listItems.add(nombre);
+                /*listItems.add(nombre);
                 adapter.notifyDataSetChanged();
+                */
 
                 ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM `ZONA-ELEMENTO` WHERE idZona='"+idZona+"'");
                 while(rs1.next()){

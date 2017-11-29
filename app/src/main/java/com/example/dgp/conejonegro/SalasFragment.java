@@ -48,22 +48,10 @@ public class SalasFragment extends Fragment {
 
         mLeadsList = (ListView) root.findViewById(R.id.salas_list);
 
-        String[] leadsNames = {
-                "Alexander Pierrot",
-                "Carlos Lopez",
-                "Sara Bonz",
-                "Liliana Clarence",
-                "Benito Peralta",
-                "Juan Jaramillo",
-                "Christian Steps",
-                "Alexa Giraldo",
-                "Linda Murillo",
-                "Lizeth Astrada"
-        };
-        mLeadsAdapter = new ArrayAdapter<>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                leadsNames);
+
+        mLeadsAdapter = new SalaAdapter(getActivity(), );
+
+
         mLeadsList.setAdapter(mLeadsAdapter);
 
 

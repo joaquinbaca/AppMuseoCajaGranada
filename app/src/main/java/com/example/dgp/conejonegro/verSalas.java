@@ -32,17 +32,17 @@ public class verSalas extends AppCompatActivity {
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         list.setAdapter(adapter);
 
-        listItems.add("hola");
+        /*listItems.add("hola");
         adapter.notifyDataSetChanged();
 
         listItems.add("alex");
         adapter.notifyDataSetChanged();
-
+        */
         salas = new ArrayList<Sala>();
         try {
             conexion = new ConexionBD();
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM SALA");
-            String descripcion = rs.getString("texto");
+            //String descripcion = rs.getString("texto");
             ArrayList<Elemento> elementos= new ArrayList<Elemento>();
             while(rs.next()) {
                 int planta = rs.getInt("planta");
@@ -51,17 +51,24 @@ public class verSalas extends AppCompatActivity {
                 rs2.next();
                 String nombre = rs2.getString("nombre");
 
-                //listItems.add(nombre);
-                //adapter.notifyDataSetChanged();
+                listItems.add(nombre);
+                adapter.notifyDataSetChanged();
 
-                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idZona='"+idZona+"'");
+                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ZONA-ELEMENTO WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
-                    Elemento e = new Elemento(rs1.getString("nombre"),rs1.getString("descripcion"));
-                    elementos.add(e);
+                    String idElemento = rs.getString("idElemento");
+                    ResultSet rsel = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+idElemento+"'");
+                    while(rsel.next()){
+                        String nombreElemento = rsel.getString("nombre");
+                        ResultSet rsdesc = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+idElemento+"'");
+                        while(rsdesc.next()){
+                            String descripcionElemento = rsdesc.getString("texto");
+                            Elemento e = new Elemento(nombreElemento, descripcionElemento);
+                            elementos.add(e);
+                        }
+                    }
                 }
                 s = new Sala(elementos, planta, nombre);
-
-
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

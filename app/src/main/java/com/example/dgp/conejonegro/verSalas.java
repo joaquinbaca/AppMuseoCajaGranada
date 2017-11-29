@@ -14,26 +14,26 @@ import java.util.ArrayList;
  */
 
 public class verSalas extends AppCompatActivity {
-   /* private ArrayList<Sala> salas;
+    private ArrayList<Sala> salas;
     ConexionBD conexion = null;
     Sala s;
-*/
-    //ArrayList<String> listItems=new ArrayList<String>();
-    //ArrayAdapter<String> adapter;
-    //private ListView list;
+
+    ArrayList<String> listItems=new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    private ListView list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listasalas);
 
-        //list = (ListView) findViewById(R.id.listView);
-        //listItems = new ArrayList<String>();
-        //adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
-        //list.setAdapter(adapter);
+        list = (ListView) findViewById(R.id.listView);
+        listItems = new ArrayList<String>();
+        adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
+        list.setAdapter(adapter);
 
 
-       /* salas = new ArrayList<Sala>();
+        salas = new ArrayList<Sala>();
         try {
             conexion = new ConexionBD();
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM SALA");
@@ -46,8 +46,8 @@ public class verSalas extends AppCompatActivity {
                 rs2.next();
                 String nombre = rs2.getString("nombre");
 
-                // listItems.add(nombre);
-                // adapter.notifyDataSetChanged();
+                listItems.add(nombre);
+                adapter.notifyDataSetChanged();
 
                 ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
@@ -63,6 +63,6 @@ public class verSalas extends AppCompatActivity {
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-        salas.add(s);*/
+        salas.add(s);
     }
 }

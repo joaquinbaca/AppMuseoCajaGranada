@@ -35,6 +35,9 @@
         <activity android:name=".Principal">
         </activity>
 
+        <activity android:name=".verSalas">
+        </activity>
+
     </application>
 
 </manifest>

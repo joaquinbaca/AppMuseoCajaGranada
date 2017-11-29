@@ -54,9 +54,9 @@ public class verSalas extends AppCompatActivity {
                 listItems.add(nombre);
                 adapter.notifyDataSetChanged();
 
-                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ZONA-ELEMENTO WHERE idZona='"+idZona+"'");
+                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM `ZONA-ELEMENTO` WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
-                    String idElemento = rs.getString("idElemento");
+                    String idElemento = rs1.getString("idElemento");
                     ResultSet rsel = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+idElemento+"'");
                     while(rsel.next()){
                         String nombreElemento = rsel.getString("nombre");

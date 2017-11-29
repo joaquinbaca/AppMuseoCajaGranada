@@ -48,4 +48,6 @@
 
     </android.support.constraint.ConstraintLayout>
 
+    <include layout="@layout/container_salas" />
+
 </android.support.constraint.ConstraintLayout>

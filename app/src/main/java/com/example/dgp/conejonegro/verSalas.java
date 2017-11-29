@@ -39,13 +39,13 @@ public class verSalas extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         */
 
-        SalasFragment leadsFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
 
-        if (leadsFragment == null) {
-            leadsFragment = SalasFragment.newInstance();
-            getSupportFragmentManager().beginTransaction().add(R.id.salas_container, leadsFragment).commit();
+        SalasFragment salasFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
+
+        if (salasFragment == null) {
+            salasFragment = SalasFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.salas_container, salasFragment).commit();
         }
-
 
         salas = new ArrayList<Sala>();
         try {
@@ -80,12 +80,16 @@ public class verSalas extends AppCompatActivity {
                     }
                 }
                 s = new Sala(elementos, planta, nombre, descripcion, imagen);
+                salas.add(s);
+                salasFragment.setSalas(salas);
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-        salas.add(s);
+
+
+
     }
 }

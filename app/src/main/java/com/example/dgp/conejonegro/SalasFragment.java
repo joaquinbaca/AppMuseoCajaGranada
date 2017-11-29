@@ -10,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 
 public class SalasFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     ListView mLeadsList;
-    ArrayAdapter<String> mLeadsAdapter;
+    SalaAdapter mLeadsAdapter;
+
+    ArrayList<Sala> salas = null;
 
     // TODO: Rename and change types of parameters
 
@@ -49,7 +53,7 @@ public class SalasFragment extends Fragment {
         mLeadsList = (ListView) root.findViewById(R.id.salas_list);
 
 
-        mLeadsAdapter = new SalaAdapter(getActivity(), );
+        mLeadsAdapter = new SalaAdapter(getActivity(), salas);
 
 
         mLeadsList.setAdapter(mLeadsAdapter);
@@ -69,5 +73,9 @@ public class SalasFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void setSalas(ArrayList<Sala> salas){
+        this.salas = salas;
     }
 }

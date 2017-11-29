@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
 
 public class SalaAdapter extends ArrayAdapter<Sala>{
 
-    public SalaAdapter(Context context, List<Sala> objects) {
+    public SalaAdapter(Context context, ArrayList<Sala> objects) {
         super(context, 0, objects);
     }
 

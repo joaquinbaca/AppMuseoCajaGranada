@@ -32,6 +32,11 @@ public class verSalas extends AppCompatActivity {
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         list.setAdapter(adapter);
 
+        listItems.add("hola");
+        adapter.notifyDataSetChanged();
+
+        listItems.add("alex");
+        adapter.notifyDataSetChanged();
 
         salas = new ArrayList<Sala>();
         try {
@@ -46,8 +51,8 @@ public class verSalas extends AppCompatActivity {
                 rs2.next();
                 String nombre = rs2.getString("nombre");
 
-                listItems.add(nombre);
-                adapter.notifyDataSetChanged();
+                //listItems.add(nombre);
+                //adapter.notifyDataSetChanged();
 
                 ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idZona='"+idZona+"'");
                 while(rs1.next()){

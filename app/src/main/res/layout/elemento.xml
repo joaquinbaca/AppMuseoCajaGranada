@@ -83,15 +83,15 @@
     <TextView
         android:id="@+id/elementoTexto"
         android:layout_width="340dp"
-        android:layout_height="184dp"
-        android:layout_marginBottom="26dp"
+        android:layout_height="149dp"
+        android:layout_marginBottom="9dp"
         android:layout_marginEnd="26dp"
         android:layout_marginStart="18dp"
         android:layout_marginTop="13dp"
         android:text="Contenido"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Bescaner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/elementoImagen" />
@@ -112,5 +112,38 @@
         app:layout_constraintEnd_toStartOf="@+id/elementoNombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+    <Button
+        android:id="@+id/Bescaner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/cast_expanded_controller_ad_label_background_color"
+        android:text="Scaner"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Binicio"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
+
+    <Button
+        android:id="@+id/Binicio"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="9dp"
+        android:background="@color/cast_expanded_controller_ad_label_background_color"
+        android:elevation="@dimen/cast_expanded_controller_seekbar_disabled_alpha"
+        android:text="Inicio"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/Bescaner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto"
+        app:layout_constraintVertical_bias="0.6" />
 
 </android.support.constraint.ConstraintLayout>

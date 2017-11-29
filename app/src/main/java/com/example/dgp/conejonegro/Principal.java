@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class Principal extends AppCompatActivity {
     Button button2;
     Button buttonConfig;
+    Button buttonListaSalas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +40,21 @@ public class Principal extends AppCompatActivity {
                 finish();
             }
         });
+
+        buttonListaSalas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Principal.this, ListarSalas.class));
+                finish();
+            }
+        });
     }
 
     public void traducirInterfaz(){
         SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
 
-        Button button1 = (Button)findViewById(R.id.principalBotonSalas);
-        button1.setText(config.getString("principalBotonSalas", "VER SALAS"));
+        buttonListaSalas = (Button)findViewById(R.id.principalBotonSalas);
+        buttonListaSalas.setText(config.getString("principalBotonSalas", "VER SALAS"));
 
         button2 = (Button)findViewById(R.id.principalBotonQR);
         button2.setText(config.getString("principalBotonQR", "ESCANEAR QR"));
@@ -57,5 +66,6 @@ public class Principal extends AppCompatActivity {
 
         TextView mTextView = (TextView)findViewById(R.id.principalTexto);
         mTextView.setText(config.getString("principalTexto", "Configuración"));
+
     }
 }

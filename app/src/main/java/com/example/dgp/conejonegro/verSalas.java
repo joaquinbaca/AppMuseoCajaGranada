@@ -14,10 +14,10 @@ import java.util.ArrayList;
  */
 
 public class verSalas extends AppCompatActivity {
-    private ArrayList<Sala> salas;
+   /* private ArrayList<Sala> salas;
     ConexionBD conexion = null;
     Sala s;
-
+*/
     //ArrayList<String> listItems=new ArrayList<String>();
     //ArrayAdapter<String> adapter;
     //private ListView list;
@@ -33,7 +33,7 @@ public class verSalas extends AppCompatActivity {
         //list.setAdapter(adapter);
 
 
-        salas = new ArrayList<Sala>();
+       /* salas = new ArrayList<Sala>();
         try {
             conexion = new ConexionBD();
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM SALA");
@@ -63,6 +63,6 @@ public class verSalas extends AppCompatActivity {
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-        salas.add(s);
+        salas.add(s);*/
     }
 }

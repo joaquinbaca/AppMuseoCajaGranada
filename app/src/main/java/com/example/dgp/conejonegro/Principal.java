@@ -44,7 +44,7 @@ public class Principal extends AppCompatActivity {
         buttonListaSalas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Principal.this, ListarSalas.class));
+                startActivity(new Intent(Principal.this, verSalas.class));
                 finish();
             }
         });

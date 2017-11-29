@@ -9,12 +9,15 @@ public class Sala {
     private ArrayList<Elemento> elementos;
     private int planta;
     private String nombre;
+    private String descripcion, imagen;
 
-    Sala(ArrayList<Elemento> elementos, int planta, String nombre){
+    Sala(ArrayList<Elemento> elementos, int planta, String nombre, String descripcion, String imagen){
         this.elementos = new ArrayList();
         this.elementos = elementos;
         this.planta = planta;
         this.nombre = nombre;
+        this.imagen = imagen;
+        this.descripcion = descripcion;
     }
 
     public int getPlanta(){
@@ -33,4 +36,15 @@ public class Sala {
         return elementos.size();
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
 }

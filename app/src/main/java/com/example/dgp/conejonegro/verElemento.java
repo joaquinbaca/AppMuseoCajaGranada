@@ -17,34 +17,39 @@ public class verElemento extends AppCompatActivity{
    private String id;
    private Elemento elemento;
     ConexionBD conexion = null;
+    private String nombre1 ="0";
+    private String descripcion1="0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.elemento);
         id = getIntent().getExtras().getString("id");//Aqui recibe el id que carga el qr cuando se crea
-    /*
+
         try {
             conexion = new ConexionBD();
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
             rs.next();
             String nombre = rs.getString("nombre");
+            nombre1=nombre;
             rs = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+id+"'");
             rs.next();
             String descripcion = rs.getString("texto");
+            descripcion1=descripcion;
             elemento = new Elemento(nombre, descripcion);
+
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-    */
-        elemento = new Elemento("Primer elemento", "Este es el primer elemento");
+
         TextView txtCambiado = (TextView)findViewById(R.id.elementoNombre);
-        txtCambiado.setText(elemento.getNombre());
+        txtCambiado.setText(nombre1);
 
         txtCambiado = (TextView)findViewById(R.id.elementoTexto);
-        txtCambiado.setText(elemento.getDescripcion());
+        txtCambiado.setText(descripcion1);
 
     }
 

@@ -54,7 +54,7 @@ public class verSalas extends AppCompatActivity {
                 String imagen = rs2.getString("imagen");
                 String nombre = rs2.getString("nombre");
 
-                ResultSet rs4 = conexion.hacerConsulta("SELECT * FROM `DESCIPCION-ZONA` WHERE idZona='"+idZona+"'");
+                ResultSet rs4 = conexion.hacerConsulta("SELECT * FROM `DESCRIPCION-ZONA` WHERE idZona='"+idZona+"'");
                 /*listItems.add(nombre);
                 adapter.notifyDataSetChanged();
                 */
@@ -67,9 +67,11 @@ public class verSalas extends AppCompatActivity {
                     while(rsel.next()){
                         String nombreElemento = rsel.getString("nombre");
                         ResultSet rsdesc = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+idElemento+"'");
-                        String descripcionElemento = rsdesc.getString("texto");
-                        Elemento e = new Elemento(nombreElemento, descripcionElemento);
-                        elementos.add(e);
+                        while(rsdesc.next()) {
+                            String descripcionElemento = rsdesc.getString("texto");
+                            Elemento e = new Elemento(nombreElemento, descripcionElemento);
+                            elementos.add(e);
+                        }
                     }
                 }
                 s = new Sala(elementos, planta, nombre, descripcion, imagen);

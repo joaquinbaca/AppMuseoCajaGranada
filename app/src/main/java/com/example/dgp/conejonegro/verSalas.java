@@ -54,14 +54,12 @@ public class verSalas extends AppCompatActivity {
                 String imagen = rs2.getString("imagen");
                 String nombre = rs2.getString("nombre");
 
-                ResultSet rs4 = conexion.hacerConsulta("SELECT * FROM `DESCIPCION-ZONA` WHERE idZona='"+idZona+"'");
+                ResultSet rs4 = conexion.hacerConsulta("SELECT * FROM `DESCRIPCION-ZONA` WHERE idZona='"+idZona+"'");
                 /*listItems.add(nombre);
                 adapter.notifyDataSetChanged();
                 */
-                String descripcion="";
-                while(rs4.next()) {
-                    descripcion = rs4.getString("texto");
-                }
+                rs4.next();
+                String descripcion = rs4.getString("texto");
                 ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM `ZONA-ELEMENTO` WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
                     String idElemento = rs1.getString("idElemento");
@@ -69,12 +67,11 @@ public class verSalas extends AppCompatActivity {
                     while(rsel.next()){
                         String nombreElemento = rsel.getString("nombre");
                         ResultSet rsdesc = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+idElemento+"'");
-                        String descripcionElemento="";
                         while(rsdesc.next()) {
-                            descripcionElemento = rsdesc.getString("texto");
+                            String descripcionElemento = rsdesc.getString("texto");
+                            Elemento e = new Elemento(nombreElemento, descripcionElemento);
+                            elementos.add(e);
                         }
-                        Elemento e = new Elemento(nombreElemento, descripcionElemento);
-                        elementos.add(e);
                     }
                 }
                 s = new Sala(elementos, planta, nombre, descripcion, imagen);

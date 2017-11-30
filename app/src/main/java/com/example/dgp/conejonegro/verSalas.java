@@ -40,11 +40,6 @@ public class verSalas extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         */
 
-        if (salasFragment == null) {
-            salasFragment = SalasFragment.newInstance();
-            getSupportFragmentManager().beginTransaction().add(R.id.salas_container, salasFragment).commit();
-        }
-
         salas = new ArrayList<Sala>();
         try {
             conexion = new ConexionBD();
@@ -87,7 +82,10 @@ public class verSalas extends AppCompatActivity {
         }
         museo.setSalas(salas);
         SalasFragment salasFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
-
+        if (salasFragment == null) {
+            salasFragment = SalasFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.salas_container, salasFragment).commit();
+        }
 
     }
 }

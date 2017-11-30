@@ -1,8 +1,11 @@
 package com.example.dgp.conejonegro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.sql.Array;
@@ -39,6 +42,19 @@ public class verSalas extends AppCompatActivity {
         listItems.add("alex");
         adapter.notifyDataSetChanged();
         */
+        Button btn = (Button)findViewById(R.id.listaSalasMenu);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verSalas.this, Principal.class));
+                try {
+                    conexion.cerrarBasedeDatos();
+                } catch (java.sql.SQLException e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
+        });
 
         salas = new ArrayList<Sala>();
         try {
@@ -58,8 +74,10 @@ public class verSalas extends AppCompatActivity {
                 /*listItems.add(nombre);
                 adapter.notifyDataSetChanged();
                 */
-                rs4.next();
-                String descripcion = rs4.getString("texto");
+                String descripcion="";
+                while(rs4.next()) {
+                    descripcion = rs4.getString("texto");
+                }
                 ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM `ZONA-ELEMENTO` WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
                     String idElemento = rs1.getString("idElemento");
@@ -67,11 +85,12 @@ public class verSalas extends AppCompatActivity {
                     while(rsel.next()){
                         String nombreElemento = rsel.getString("nombre");
                         ResultSet rsdesc = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+idElemento+"'");
+                        String descripcionElemento="";
                         while(rsdesc.next()) {
-                            String descripcionElemento = rsdesc.getString("texto");
-                            Elemento e = new Elemento(nombreElemento, descripcionElemento);
-                            elementos.add(e);
+                            descripcionElemento = rsdesc.getString("texto");
                         }
+                        Elemento e = new Elemento(nombreElemento, descripcionElemento);
+                        elementos.add(e);
                     }
                 }
                 s = new Sala(elementos, planta, nombre, descripcion, imagen);

@@ -6,22 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/elementoNombre"
-        android:layout_width="191dp"
-        android:layout_height="30dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:text="ID-delObjeto"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/elementoImagen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout5"
         android:layout_width="383dp"
@@ -29,7 +13,7 @@
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="1dp"
         android:layout_marginTop="1dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/elementoNombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -67,83 +51,69 @@
         android:id="@+id/elementoImagen"
         android:layout_width="287dp"
         android:layout_height="135dp"
-        android:layout_marginBottom="13dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginStart="43dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:adjustViewBounds="false"
         android:background="@android:drawable/screen_background_dark_transparent"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/elementoTexto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/elementoNombre"
-        app:srcCompat="@color/cast_expanded_controller_ad_container_white_stripe_color" />
+        app:srcCompat="@color/cast_expanded_controller_ad_container_white_stripe_color"
+        tools:layout_editor_absoluteX="49dp" />
 
     <TextView
         android:id="@+id/elementoTexto"
-        android:layout_width="340dp"
-        android:layout_height="149dp"
-        android:layout_marginBottom="9dp"
+        android:layout_width="332dp"
+        android:layout_height="125dp"
         android:layout_marginEnd="26dp"
         android:layout_marginStart="18dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="24dp"
         android:text="Contenido"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/Bescaner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/elementoImagen" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/elementoNombre"
         android:layout_width="98dp"
         android:layout_height="34dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="11dp"
         android:text="Nombre"
         android:textAlignment="textEnd"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/elementoImagen"
-        app:layout_constraintEnd_toStartOf="@+id/elementoNombre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="113dp" />
 
     <Button
-        android:id="@+id/Bescaner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="9dp"
+        android:id="@+id/elementoBotonMenu"
+        android:layout_width="164dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="23dp"
         android:background="@color/cast_expanded_controller_ad_label_background_color"
-        android:text="Scaner"
+        android:text="Menú"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Binicio"
+        app:layout_constraintStart_toEndOf="@+id/elementoBotonSala"
         app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
 
     <Button
-        android:id="@+id/Binicio"
+        android:id="@+id/elementoBotonSala"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="158dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="24dp"
         android:background="@color/cast_expanded_controller_ad_label_background_color"
         android:elevation="@dimen/cast_expanded_controller_seekbar_disabled_alpha"
-        android:text="Inicio"
+        android:text="Sala"
         android:textColor="@color/cast_expanded_controller_background_color"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/Bescaner"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/elementoTexto"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
 
 </android.support.constraint.ConstraintLayout>

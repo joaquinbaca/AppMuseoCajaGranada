@@ -22,17 +22,14 @@ public class verElemento extends AppCompatActivity{
 
    private String id;
    private Elemento elemento;
-    ConexionBD conexion = null;
-    private String nombre1 ="0";
-    private String descripcion1="0";
-
+   ConexionBD conexion = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.elemento);
         id = getIntent().getExtras().getString("id");//Aqui recibe el id que carga el qr cuando se crea
-        Button btn = (Button)findViewById(R.id.Binicio);
+        Button btn = (Button)findViewById(R.id.elementoBotonMenu);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +37,7 @@ public class verElemento extends AppCompatActivity{
                 finish();
             }
         });
-        Button btn1 = (Button)findViewById(R.id.Bescaner);
+        Button btn1 = (Button)findViewById(R.id.elementoBotonSala);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,14 +51,10 @@ public class verElemento extends AppCompatActivity{
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
             rs.next();
             String nombre = rs.getString("nombre");
-            nombre1=nombre;
             rs = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+id+"'");
             rs.next();
             String descripcion = rs.getString("texto");
-            descripcion1=descripcion;
             elemento = new Elemento(nombre, descripcion);
-
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {
@@ -69,10 +62,10 @@ public class verElemento extends AppCompatActivity{
         }
 
         TextView txtCambiado = (TextView)findViewById(R.id.elementoNombre);
-        txtCambiado.setText(nombre1);
+        txtCambiado.setText(elemento.getNombre());
 
         txtCambiado = (TextView)findViewById(R.id.elementoTexto);
-        txtCambiado.setText(descripcion1);
+        txtCambiado.setText(elemento.getDescripcion());
 
 
     }

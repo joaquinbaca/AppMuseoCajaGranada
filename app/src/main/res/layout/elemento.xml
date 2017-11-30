@@ -12,7 +12,7 @@
         android:layout_height="87dp"
         android:layout_marginBottom="11dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toTopOf="@+id/elementoNombre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,11 +81,14 @@
         android:id="@+id/elementoNombre"
         android:layout_width="98dp"
         android:layout_height="34dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="Nombre"
         android:textAlignment="textEnd"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="143dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="113dp" />
 
     <Button

@@ -6,8 +6,6 @@
     android:minHeight="?attr/listPreferredItemHeight"
     android:orientation="vertical"
     android:paddingBottom="8dp"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="8dp">
 
     <ImageView

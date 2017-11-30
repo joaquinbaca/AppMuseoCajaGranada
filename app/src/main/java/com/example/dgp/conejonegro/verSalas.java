@@ -17,6 +17,7 @@ public class verSalas extends AppCompatActivity {
     private ArrayList<Sala> salas;
     ConexionBD conexion = null;
     Sala s;
+    Museo museo = Museo.getInstance();
 
     ArrayList<String> listItems=new ArrayList<String>();
     ArrayAdapter<String> adapter;
@@ -38,9 +39,6 @@ public class verSalas extends AppCompatActivity {
         listItems.add("alex");
         adapter.notifyDataSetChanged();
         */
-
-
-        SalasFragment salasFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
 
         if (salasFragment == null) {
             salasFragment = SalasFragment.newInstance();
@@ -81,14 +79,14 @@ public class verSalas extends AppCompatActivity {
                 }
                 s = new Sala(elementos, planta, nombre, descripcion, imagen);
                 salas.add(s);
-                salasFragment.setSalas(salas);
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-
+        museo.setSalas(salas);
+        SalasFragment salasFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
 
 
     }

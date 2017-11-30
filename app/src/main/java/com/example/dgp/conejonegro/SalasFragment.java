@@ -19,7 +19,7 @@ public class SalasFragment extends Fragment {
     ListView mLeadsList;
     SalaAdapter mLeadsAdapter;
 
-    ArrayList<Sala> salas = null;
+    Museo museo = Museo.getInstance();
 
     // TODO: Rename and change types of parameters
 
@@ -53,7 +53,7 @@ public class SalasFragment extends Fragment {
         mLeadsList = (ListView) root.findViewById(R.id.salas_list);
 
 
-        mLeadsAdapter = new SalaAdapter(getActivity(), salas);
+        mLeadsAdapter = new SalaAdapter(getActivity(), museo.getSalas());
 
 
         mLeadsList.setAdapter(mLeadsAdapter);
@@ -75,7 +75,4 @@ public class SalasFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    public void setSalas(ArrayList<Sala> salas){
-        this.salas = salas;
-    }
 }

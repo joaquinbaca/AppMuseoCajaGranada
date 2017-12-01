@@ -30,6 +30,11 @@ public class ConexionBD {
         return rs;
     }
 
+    public void hacerUpdate(String consulta) throws java.sql.SQLException {
+        Statement stmt = conexion.createStatement();
+        stmt.executeUpdate(consulta);
+    }
+
     public void cerrarBasedeDatos() throws java.sql.SQLException {
         conexion.close();
     }

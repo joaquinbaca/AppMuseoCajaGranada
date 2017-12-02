@@ -23,6 +23,7 @@ public class verElemento extends AppCompatActivity{
    private String id;
    private Elemento elemento;
    ConexionBD conexion = null;
+   private String imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,9 @@ public class verElemento extends AppCompatActivity{
             rs = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+id+"'");
             rs.next();
             String descripcion = rs.getString("texto");
+            rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
+            rs.next();
+            imagen  = rs.getString("QR");
             elemento = new Elemento(nombre, descripcion);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -67,6 +71,18 @@ public class verElemento extends AppCompatActivity{
         txtCambiado = (TextView)findViewById(R.id.elementoTexto);
         txtCambiado.setText(elemento.getDescripcion());
 
+        ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
+
+        URL imageUrl = null;
+        try {
+            imageUrl = new URL(imagen);
+            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.connect();
+            Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+            foto.setImageBitmap(loadedImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  * Created by Alvaro on 03/12/2017.
@@ -22,9 +23,7 @@ import java.sql.ResultSet;
 public class verContenidoSala extends AppCompatActivity{
 
     private String idZona;
-    private Elemento elemento;
     ConexionBD conexion = null;
-    private String imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +34,10 @@ public class verContenidoSala extends AppCompatActivity{
         TextView tvNombreSala = (TextView)findViewById(R.id.NombreSala);
         TextView tvDescripcionSala = (TextView)findViewById(R.id.DescripcionSala);
 
-        try {
-            conexion = new ConexionBD();
-            ResultSet rs = conexion.hacerConsulta("SELECT * FROM ZONA WHERE idZona='"+idZona+"'");
-            rs.next();
-            String nombreSala = rs.getString("nombre");
-            rs = conexion.hacerConsulta("SELECT * FROM `DESCRIPCION-ZONA` WHERE idZona='"+idZona+"'");
-            rs.next();
-            String descripcionSala = rs.getString("texto");
 
-            tvNombreSala.setText(nombreSala);
-            tvDescripcionSala.setText(descripcionSala);
+        Sala sala = Museo.getInstance().getSala(idZona);
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-
+        tvNombreSala.setText(sala.getNombre());
+        tvDescripcionSala.setText(sala.getDescripcion());
     }
 }

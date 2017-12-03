@@ -1,5 +1,7 @@
 package com.example.dgp.conejonegro;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -27,6 +29,15 @@ public class Museo {
 
     public ArrayList<Sala> getSalas(){
         return salas;
+    }
+
+    public Sala getSala(String id){
+        Sala sala = null;
+        for (Sala s : salas){
+            if(s.getIdZona().equals(id))
+                sala = s;
+        }
+        return sala;
     }
 
 }

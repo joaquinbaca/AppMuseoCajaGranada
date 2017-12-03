@@ -93,7 +93,7 @@ public class verSalas extends AppCompatActivity {
                         elementos.add(e);
                     }
                 }
-                s = new Sala(elementos, planta, nombre, descripcion, imagen);
+                s = new Sala(elementos, planta, nombre, descripcion, imagen, idZona);
                 salas.add(s);
             }
         } catch (ClassNotFoundException e) {

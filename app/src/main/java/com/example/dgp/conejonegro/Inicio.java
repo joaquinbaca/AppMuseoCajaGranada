@@ -34,7 +34,7 @@ public class Inicio extends AppCompatActivity {
 
 
 
-        //COMPROBAR SI INTRODUCIO CLAVE ANTES Y SI ES CORRECTA
+        //COMPROBAR SI INTRODUJO CLAVE ANTES Y SI ES CORRECTA
         final SharedPreferences config_clave=getSharedPreferences("clave", Context.MODE_PRIVATE);
 
         if(config_clave.contains("fecha")){

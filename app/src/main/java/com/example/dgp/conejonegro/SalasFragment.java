@@ -1,16 +1,21 @@
 package com.example.dgp.conejonegro;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -70,12 +75,23 @@ public class SalasFragment extends Fragment {
                 shareIntent.putExtra("id", sala.getIdZona());
                 shareIntent.setType("text/plain");
                 startActivity(shareIntent);
+                getActivity().finish();
             }
         });
 
 
-
+        setHasOptionsMenu(true);
         return root;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.filtrar).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -83,6 +99,16 @@ public class SalasFragment extends Fragment {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.filtrar) {
+            // Eliminar todos los lea
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

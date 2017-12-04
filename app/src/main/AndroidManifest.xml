@@ -36,9 +36,19 @@
         </activity>
 
         <activity android:name=".verSalas">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable">
+            </meta-data>
         </activity>
 
         <activity android:name=".verContenidoSala">
+        </activity>
+
+        <activity android:name=".buscador">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
         </activity>
 
     </application>

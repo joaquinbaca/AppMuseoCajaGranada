@@ -57,8 +57,19 @@ public class verElemento extends AppCompatActivity{
             String descripcion = rs.getString("texto");
             rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
             rs.next();
-            imagen  = rs.getString("QR");
-            elemento = new Elemento(nombre, descripcion);
+            ResultSet rsmedio = conexion.hacerConsulta("SELECT * FROM MEDIO WHERE idElemento='"+id+"'");
+            String idMedio;
+            if(rsmedio.isBeforeFirst()) {
+                rsmedio.next();
+                idMedio = rsmedio.getString("idmedio");
+                ResultSet rsfoto = conexion.hacerConsulta("SELECT * FROM FOTO WHERE idElemento='"+idMedio+"'");
+                rsfoto.next();
+                imagen = rsfoto.getString("url");
+            }
+            else{
+                imagen = "http://webappmuseo.ddns.net:8742/images/noimage.png";
+            }
+            elemento = new Elemento(nombre, descripcion, imagen);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {

@@ -10,25 +10,34 @@
         android:id="@+id/NombreSala"
         android:layout_width="143dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="183dp"
-        android:layout_marginStart="143dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
         android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/include"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/DescripcionSala"
-        android:layout_width="182dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="342dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginStart="73dp"
-        android:layout_marginTop="35dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/foto"
+        android:layout_width="88dp"
+        android:layout_height="72dp"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginEnd="630dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NombreSala" />
+        app:layout_constraintStart_toEndOf="@+id/include"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/container_contenido_sala"
+        android:layout_height="442dp" />
+
 </android.support.constraint.ConstraintLayout>

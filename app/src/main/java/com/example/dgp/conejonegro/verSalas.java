@@ -89,7 +89,20 @@ public class verSalas extends AppCompatActivity {
                         while(rsdesc.next()) {
                             descripcionElemento = rsdesc.getString("texto");
                         }
-                        Elemento e = new Elemento(nombreElemento, descripcionElemento);
+                        ResultSet rsmedio = conexion.hacerConsulta("SELECT * FROM MEDIO WHERE idElemento='"+idElemento+"'");
+                        String idMedio;
+                        String url_foto;
+                        if(rsmedio.isBeforeFirst()) {
+                            rsmedio.next();
+                            idMedio = rsmedio.getString("idmedio");
+                            ResultSet rsfoto = conexion.hacerConsulta("SELECT * FROM FOTO WHERE idElemento='"+idMedio+"'");
+                            rsfoto.next();
+                            url_foto = rsfoto.getString("url");
+                        }
+                        else{
+                            url_foto = "http://webappmuseo.ddns.net:8742/images/noimage.png";
+                        }
+                        Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto);
                         elementos.add(e);
                     }
                 }

@@ -8,10 +8,12 @@ public class Elemento {
 
     private String nombre;
     private String descripcion;
+    private String imagen;
 
-    public Elemento(String nombre, String descripcion){
+    public Elemento(String nombre, String descripcion, String imagen){
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.imagen = imagen;
     }
 
     public String getNombre(){
@@ -20,6 +22,10 @@ public class Elemento {
 
     public String getDescripcion(){
         return descripcion;
+    }
+
+    public String getImagen() {
+        return imagen;
     }
 
 }

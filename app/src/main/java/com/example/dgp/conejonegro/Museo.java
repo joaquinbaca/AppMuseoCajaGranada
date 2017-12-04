@@ -46,8 +46,10 @@ public class Museo {
             salas_elegidas=salas;
         else {
             for (Sala s : salas) {
-                if (s.getNombre().contains(query.toLowerCase()) || s.getDescripcion().contains(query.toLowerCase()))
+                if (s.getNombre().contains(query.toLowerCase()) || s.getDescripcion().contains(query.toLowerCase()) || query.toLowerCase().equals(s.getDescripcion())|| query.toLowerCase().equals(s.getNombre().toLowerCase()) )
                     salas_elegidas.add(s);
+                Log.v(s.getIdZona(), s.getNombre().toLowerCase());
+                Log.v("query", query.toLowerCase());
             }
         }
         return salas_elegidas;

@@ -60,18 +60,18 @@ public class ContenidoSalaFragment extends Fragment {
 
 
         mSalasList.setAdapter(mSalasAdapter);
-/*
+
         mSalasList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Sala sala = mSalasAdapter.getItem(position);
-                Intent shareIntent = new Intent(getActivity(), verContenidoSala.class);
+                Elemento elemento = mSalasAdapter.getItem(position);
+                Intent shareIntent = new Intent(getActivity(), verElemento.class);
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra("id", sala.getIdZona());
+                shareIntent.putExtra("id", elemento.getIdElemento());
                 shareIntent.setType("text/plain");
                 startActivity(shareIntent);
             }
-        });*/
+        });
 
 
 

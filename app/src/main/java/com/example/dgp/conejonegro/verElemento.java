@@ -69,7 +69,7 @@ public class verElemento extends AppCompatActivity{
             else{
                 imagen = "http://webappmuseo.ddns.net:8742/images/noimage.png";
             }
-            elemento = new Elemento(nombre, descripcion, imagen);
+            elemento = new Elemento(nombre, descripcion, imagen, id);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {

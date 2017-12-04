@@ -102,7 +102,7 @@ public class verSalas extends AppCompatActivity {
                         else{
                             url_foto = "http://webappmuseo.ddns.net:8742/images/noimage.png";
                         }
-                        Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto);
+                        Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto, idElemento);
                         elementos.add(e);
                     }
                 }

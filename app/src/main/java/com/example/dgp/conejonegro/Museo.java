@@ -40,4 +40,17 @@ public class Museo {
         return sala;
     }
 
+    public ArrayList<Sala> getSalasFiltro(String query){
+        ArrayList<Sala> salas_elegidas = new ArrayList<>();
+        if(query.equals("") || query.equals(" "))
+            salas_elegidas=salas;
+        else {
+            for (Sala s : salas) {
+                if (s.getNombre().contains(query.toLowerCase()) || s.getDescripcion().contains(query.toLowerCase()))
+                    salas_elegidas.add(s);
+            }
+        }
+        return salas_elegidas;
+    }
+
 }

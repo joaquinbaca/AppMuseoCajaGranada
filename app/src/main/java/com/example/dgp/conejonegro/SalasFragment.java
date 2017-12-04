@@ -96,7 +96,8 @@ public class SalasFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d("HOLA", query);
+                mSalasAdapter = new SalaAdapter(getActivity(), museo.getSalasFiltro(query));
+                mSalasList.setAdapter(mSalasAdapter);
                 return false;
             }
             @Override

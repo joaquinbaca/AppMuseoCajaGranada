@@ -1,5 +1,6 @@
 package com.example.dgp.conejonegro;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +18,11 @@ public class Principal extends AppCompatActivity {
     Button button2;
     Button buttonConfig;
     Button buttonListaSalas;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.principal);
 
@@ -36,6 +39,8 @@ public class Principal extends AppCompatActivity {
         buttonConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
                 startActivity(new Intent(Principal.this, Configuracion.class));
                 finish();
             }
@@ -44,6 +49,8 @@ public class Principal extends AppCompatActivity {
         buttonListaSalas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cargando Salas");
+                progressDialog.show();
                 startActivity(new Intent(Principal.this, verSalas.class));
                 finish();
             }

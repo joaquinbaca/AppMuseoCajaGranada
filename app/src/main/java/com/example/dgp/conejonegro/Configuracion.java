@@ -3,6 +3,7 @@ package com.example.dgp.conejonegro;
 /**
  * Created by alexr on 04/11/2017.
  */
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,10 +28,12 @@ public class Configuracion extends AppCompatActivity {
     private String idioma = " ";
     private Spinner spinner;
     ConexionBD conexion = null;
+    private ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuracion);
 
@@ -58,6 +61,7 @@ public class Configuracion extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 idioma = parent.getItemAtPosition(position).toString();
                 try {
                     actualizarIdioma(conexion);
@@ -67,6 +71,7 @@ public class Configuracion extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 actualizarPantalla();
+
             }
 
             @Override
@@ -129,6 +134,7 @@ public class Configuracion extends AppCompatActivity {
 
     public void actualizarIdioma(ConexionBD conexion) throws SQLException, ClassNotFoundException {
 
+
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = config.edit();
         ResultSet rs = conexion.hacerConsulta("SELECT  idIdioma FROM IDIOMA WHERE nombre = '" + idioma + "'" );
@@ -140,6 +146,7 @@ public class Configuracion extends AppCompatActivity {
             editor.putString(rs.getString("nombreElemento"), rs.getString("traduccion"));
         }
         editor.commit();
+
     }
 
     public void actualizarPantalla(){

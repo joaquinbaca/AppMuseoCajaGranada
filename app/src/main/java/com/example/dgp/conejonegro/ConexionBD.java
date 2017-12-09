@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class ConexionBD {
 
     private Connection conexion;
-    private String ip = "81.36.181.95";
+    private String ip = "webappmuseo.ddns.net";
     private String puerto = "3306";
     private String nombreBD = "Museo";
     private String user = "usuario";

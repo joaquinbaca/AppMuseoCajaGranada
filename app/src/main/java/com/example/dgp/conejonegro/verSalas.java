@@ -78,7 +78,7 @@ public class verSalas extends AppCompatActivity {
                 while(rs4.next()) {
                     descripcion = rs4.getString("texto");
                 }
-                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM `ZONA-ELEMENTO` WHERE idZona='"+idZona+"'");
+                ResultSet rs1 = conexion.hacerConsulta("SELECT * FROM ZONA_ELEMENTO WHERE idZona='"+idZona+"'");
                 while(rs1.next()){
                     String idElemento = rs1.getString("idElemento");
                     ResultSet rsel = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+idElemento+"'");

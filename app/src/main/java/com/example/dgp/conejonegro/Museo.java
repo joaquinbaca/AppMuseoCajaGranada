@@ -11,9 +11,11 @@ import java.util.ArrayList;
 public class Museo {
     private static Museo instance = null;
     private ArrayList<Sala> salas;
+    private boolean completo;
 
     private Museo() {
         salas=new ArrayList<Sala>();
+        completo = false;
     }
 
     public static Museo getInstance() {
@@ -21,6 +23,14 @@ public class Museo {
             instance = new Museo();
 
         return instance;
+    }
+
+    public boolean getCompleto(){
+        return completo;
+    }
+
+    public void setCompleto(boolean completo){
+        this.completo = completo;
     }
 
     public void setSalas(ArrayList<Sala> salas){
@@ -53,6 +63,16 @@ public class Museo {
             }
         }
         return salas_elegidas;
+    }
+
+    public Elemento getElemento(String idElemento){
+        for (Sala s : salas){
+            for (Elemento e : s.getElementos()){
+                if(e.getIdElemento().equals(idElemento))
+                    return e;
+            }
+        }
+        return null;
     }
 
 }

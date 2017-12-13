@@ -47,7 +47,7 @@ public class verElemento extends AppCompatActivity{
             }
         });
 
-        try {
+       /* try {
             conexion = new ConexionBD();
             ResultSet rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
             rs.next();
@@ -75,26 +75,31 @@ public class verElemento extends AppCompatActivity{
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
+*/
 
-        TextView txtCambiado = (TextView)findViewById(R.id.elementoNombre);
-        txtCambiado.setText(elemento.getNombre());
+       Museo museo = Museo.getInstance();
+       Elemento elemento = museo.getElemento(id);
 
-        txtCambiado = (TextView)findViewById(R.id.elementoTexto);
-        txtCambiado.setText(elemento.getDescripcion());
+       if(elemento != null) {
+           TextView txtCambiado = (TextView) findViewById(R.id.elementoNombre);
+           txtCambiado.setText(elemento.getNombre());
 
-        ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
+           txtCambiado = (TextView) findViewById(R.id.elementoTexto);
+           txtCambiado.setText(elemento.getDescripcion());
 
-        URL imageUrl = null;
-        try {
-            imageUrl = new URL(imagen);
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.connect();
-            Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-            foto.setImageBitmap(loadedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+           ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
 
+           URL imageUrl = null;
+           try {
+               imageUrl = new URL(elemento.getImagen());
+               HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+               conn.connect();
+               Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+               foto.setImageBitmap(loadedImage);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+       }
     }
 
 }

@@ -6,10 +6,12 @@ package com.example.dgp.conejonegro;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -17,6 +19,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.ResultSet;
+import android.media.MediaPlayer;
+import android.widget.VideoView;
 
 public class verElemento extends AppCompatActivity{
 
@@ -24,6 +28,7 @@ public class verElemento extends AppCompatActivity{
    private Elemento elemento;
    ConexionBD conexion = null;
    private String imagen;
+   VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,19 @@ public class verElemento extends AppCompatActivity{
                 finish();
             }
         });
+
+
+        ///////////////////parte del video//////////
+        videoView = (VideoView) findViewById(R.id.videoView);
+
+        Uri uri = Uri.parse("http://webappmuseo.ddns.net:8742/videos/ILSEMedinaAzahara.mp4");
+        videoView.setMediaController((new MediaController(this)));
+        videoView.setVideoURI(uri);
+        videoView.requestFocus();
+        videoView.start();
+
+        /////////////////////////////////////////////
+
 
        /* try {
             conexion = new ConexionBD();

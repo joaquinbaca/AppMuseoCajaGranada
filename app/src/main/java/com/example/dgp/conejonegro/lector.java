@@ -1,6 +1,7 @@
 package com.example.dgp.conejonegro;
 
         import android.Manifest;
+        import android.app.ProgressDialog;
         import android.content.Intent;
         import android.content.pm.PackageManager;
         import android.os.Build;
@@ -29,21 +30,47 @@ public class lector extends AppCompatActivity{
     private String token = "";
     /////------------///
     private String tokenanterior = "";
+    private ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lector);
 
         cameraView = (SurfaceView) findViewById(R.id.camera_view);
         initQR();
-        Button btn = (Button)findViewById(R.id.VolverQR);
 
+        Button btn = (Button)findViewById(R.id.VolverQR);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
                 startActivity(new Intent(lector.this, Principal.class));
+                finish();
+            }
+        });
+
+        Button btn1 = (Button)findViewById(R.id.lectorBotonSalas2);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
+                startActivity(new Intent(lector.this, verSalas.class));
+                finish();
+            }
+        });
+
+        Button btn2 = (Button)findViewById(R.id.lectorconfiguracionBoton2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
+                startActivity(new Intent(lector.this, Configuracion.class));
                 finish();
             }
         });

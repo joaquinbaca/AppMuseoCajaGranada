@@ -6,6 +6,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/qrConfiguracionBoton2"
+        android:layout_width="54dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/config"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/qrBotonRutas2"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
+
+    <Button
+        android:id="@+id/qrBotonRutas2"
+        android:layout_width="58dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rutaicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qrConfiguracionBoton2"
+        app:layout_constraintStart_toEndOf="@+id/qrBotonQR2"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
+
+    <Button
+        android:id="@+id/qrBotonQR2"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/qricon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qrBotonRutas2"
+        app:layout_constraintStart_toEndOf="@+id/qrBotonSalas2"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
+
+    <Button
+        android:id="@+id/qrBotonSalas2"
+        android:layout_width="56dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/salas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/qrBotonQR2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/elementoTexto" />
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout5"
         android:layout_width="0dp"
@@ -97,38 +150,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
-
-    <Button
-        android:id="@+id/elementoBotonMenu"
-        android:layout_width="96dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="26dp"
-        android:layout_marginStart="136dp"
-        android:background="@color/cast_expanded_controller_ad_label_background_color"
-        android:text="Menú"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/elementoBotonSala"
-        app:layout_constraintTop_toBottomOf="@+id/elementoTexto"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/elementoBotonSala"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="100dp"
-        android:layout_height="32dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="26dp"
-        android:background="@color/cast_expanded_controller_ad_label_background_color"
-        android:elevation="@dimen/cast_expanded_controller_seekbar_disabled_alpha"
-        android:text="Sala"
-        android:textColor="@color/cast_expanded_controller_background_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/elementoBotonMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/elementoTexto"
-        app:layout_constraintVertical_bias="1.0" />
 
     <VideoView
         android:id="@+id/videoView"

@@ -31,6 +31,8 @@ public class Principal extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
                 startActivity(new Intent(Principal.this, lector.class));
                 finish();
             }

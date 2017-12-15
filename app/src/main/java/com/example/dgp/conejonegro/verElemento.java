@@ -3,6 +3,7 @@ package com.example.dgp.conejonegro;
 /**
  * Created by joaqu on 29/10/2017.
  */
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,25 +30,42 @@ public class verElemento extends AppCompatActivity{
    ConexionBD conexion = null;
    private String imagen;
    VideoView videoView;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.elemento);
         id = getIntent().getExtras().getString("id");//Aqui recibe el id que carga el qr cuando se crea
-        Button btn = (Button)findViewById(R.id.elementoBotonMenu);
+        Button btn = (Button)findViewById(R.id.qrConfiguracionBoton2);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(verElemento.this, Principal.class));
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
+                startActivity(new Intent(verElemento.this, Configuracion.class));
                 finish();
             }
         });
-        Button btn1 = (Button)findViewById(R.id.elementoBotonSala);
+        Button btn1 = (Button)findViewById(R.id.qrBotonQR2);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
                 startActivity(new Intent(verElemento.this, lector.class));
+                finish();
+            }
+        });
+
+        Button btn2 = (Button)findViewById(R.id.qrBotonSalas2);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Cargando");
+                progressDialog.show();
+                startActivity(new Intent(verElemento.this, verSalas.class));
                 finish();
             }
         });

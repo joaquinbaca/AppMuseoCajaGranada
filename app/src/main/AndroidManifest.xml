@@ -39,7 +39,8 @@
                 android:windowSoftInputMode="adjustPan">
         </activity>
 
-        <activity android:name=".verContenidoSala">
+        <activity android:name=".verContenidoSala"
+            android:windowSoftInputMode="adjustPan">
         </activity>
 
         <activity android:name=".buscador">

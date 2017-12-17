@@ -75,4 +75,14 @@ public class Museo {
         return null;
     }
 
+    public ArrayList<Elemento> getElementosFiltro(String query, Sala sala){
+        ArrayList<Elemento> elementos = sala.getElementos();
+        ArrayList<Elemento> resultados = new ArrayList<>();
+        for(Elemento e : elementos){
+            if(e.getNombre().contains(query.toLowerCase()) || e.getDescripcion().contains(query.toLowerCase()) || query.toLowerCase().equals(e.getDescripcion())|| query.toLowerCase().equals(e.getNombre().toLowerCase()) )
+                resultados.add(e);
+        }
+        return resultados;
+    }
+
 }

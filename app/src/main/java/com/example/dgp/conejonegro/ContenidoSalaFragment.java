@@ -1,15 +1,20 @@
 package com.example.dgp.conejonegro;
 
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 /**
  * Created by Alvaro on 04/12/2017.
@@ -18,7 +23,7 @@ import android.widget.ListView;
 public class ContenidoSalaFragment extends Fragment {
     ListView mSalasList;
     ContenidoSalaAdapter mSalasAdapter;
-
+    Sala sala;
     Museo museo = Museo.getInstance();
 
 
@@ -46,6 +51,32 @@ public class ContenidoSalaFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu, menu);
+
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.filtrar).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mSalasAdapter = new ContenidoSalaAdapter(getActivity(), museo.getElementosFiltro(query, sala));
+                mSalasList.setAdapter(mSalasAdapter);
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String query)
+            {
+                mSalasAdapter = new ContenidoSalaAdapter(getActivity(), museo.getElementosFiltro(query, sala));
+                mSalasList.setAdapter(mSalasAdapter);
+                return true;
+            }
+        });
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,7 +85,7 @@ public class ContenidoSalaFragment extends Fragment {
         mSalasList = (ListView) root.findViewById(R.id.contenido_sala_list);
 
         String idZona = getActivity().getIntent().getExtras().getString("id");
-        Sala sala = Museo.getInstance().getSala(idZona);
+        sala = Museo.getInstance().getSala(idZona);
 
         mSalasAdapter = new ContenidoSalaAdapter(getActivity(), sala.getElementos());
 
@@ -74,7 +105,7 @@ public class ContenidoSalaFragment extends Fragment {
         });
 
 
-
+        setHasOptionsMenu(true);
         return root;
     }
 

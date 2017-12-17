@@ -5,74 +5,121 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/principalTexto"
-        android:layout_width="87dp"
-        android:layout_height="19dp"
-        android:layout_marginBottom="7dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="12dp"
-        android:text="Configuración"
-        android:textAlignment="center"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/menuInferior"
+        android:layout_width="377dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/principalTextoRutas"
-        app:layout_constraintTop_toBottomOf="@+id/configuracionBoton" />
-
-    <Button
-        android:id="@+id/configuracionBoton"
-        android:layout_width="54dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="13dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/config"
-        app:layout_constraintBottom_toTopOf="@+id/principalTexto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/principalBotonRutas"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <Button
-        android:id="@+id/principalBotonRutas"
-        android:layout_width="58dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/rutaicon"
-        app:layout_constraintBottom_toTopOf="@+id/principalTextoRutas"
-        app:layout_constraintEnd_toStartOf="@+id/configuracionBoton"
-        app:layout_constraintStart_toEndOf="@+id/principalBotonQR"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/principalBotonQR"
-        android:layout_width="57dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/qricon"
-        app:layout_constraintBottom_toTopOf="@+id/principalTextoQR"
-        app:layout_constraintEnd_toStartOf="@+id/principalBotonRutas"
-        app:layout_constraintStart_toEndOf="@+id/principalBotonSalas"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-    <Button
-        android:id="@+id/principalBotonSalas"
-        android:layout_width="56dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="34dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="23dp"
-        android:background="@drawable/salas"
-        app:layout_constraintBottom_toTopOf="@+id/principalTextoSalas"
-        app:layout_constraintEnd_toStartOf="@+id/principalBotonQR"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView7">
+
+        <Button
+            android:id="@+id/principalBotonRutas"
+            android:layout_width="58dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rutaicon"
+            app:layout_constraintBottom_toTopOf="@+id/principalTextoRutas"
+            app:layout_constraintEnd_toStartOf="@+id/configuracionBoton"
+            app:layout_constraintStart_toEndOf="@+id/principalBotonQR"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/configuracionBoton"
+            android:layout_width="54dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/config"
+            app:layout_constraintBottom_toTopOf="@+id/principalTexto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/principalBotonRutas"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/principalTextoRutas"
+            android:layout_width="80dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:text="Rutas"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/principalTexto"
+            app:layout_constraintStart_toEndOf="@+id/principalTextoQR" />
+
+        <TextView
+            android:id="@+id/principalTexto"
+            android:layout_width="87dp"
+            android:layout_height="19dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="9dp"
+            android:text="Configuración"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/principalTextoRutas" />
+
+        <TextView
+            android:id="@+id/principalTextoQR"
+            android:layout_width="76dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="8dp"
+            android:text="Lector QR"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/principalTextoRutas"
+            app:layout_constraintStart_toEndOf="@+id/principalTextoSalas" />
+
+        <Button
+            android:id="@+id/principalBotonSalas"
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="34dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/salas"
+            app:layout_constraintBottom_toTopOf="@+id/principalTextoSalas"
+            app:layout_constraintEnd_toStartOf="@+id/principalBotonQR"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/principalBotonQR"
+            android:layout_width="57dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/qricon"
+            app:layout_constraintBottom_toTopOf="@+id/principalTextoQR"
+            app:layout_constraintEnd_toStartOf="@+id/principalBotonRutas"
+            app:layout_constraintStart_toEndOf="@+id/principalBotonSalas"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/principalTextoSalas"
+            android:layout_width="82dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="16dp"
+            android:text="Listar Salas"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/principalTextoQR"
+            app:layout_constraintStart_toStartOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -113,56 +160,14 @@
             app:srcCompat="@drawable/logo" />
     </android.support.constraint.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/principalTextoQR"
-        android:layout_width="76dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="12dp"
-        android:text="Lector QR"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/principalTextoRutas"
-        app:layout_constraintStart_toEndOf="@+id/principalTextoSalas"
-        app:layout_constraintTop_toBottomOf="@+id/principalBotonQR" />
-
-    <TextView
-        android:id="@+id/principalTextoRutas"
-        android:layout_width="80dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="Rutas"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/principalTexto"
-        app:layout_constraintStart_toEndOf="@+id/principalTextoQR"
-        app:layout_constraintTop_toBottomOf="@+id/principalBotonRutas" />
-
-    <TextView
-        android:id="@+id/principalTextoSalas"
-        android:layout_width="82dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Listar Salas"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/principalTextoQR"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/principalBotonSalas" />
-
     <ImageView
         android:id="@+id/imageView7"
         android:layout_width="305dp"
         android:layout_height="293dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="39dp"
         android:layout_marginStart="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/configuracionBoton"
+        app:layout_constraintBottom_toTopOf="@+id/menuInferior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"

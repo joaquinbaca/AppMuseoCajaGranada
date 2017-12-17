@@ -36,15 +36,6 @@ public class verSalas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listasalas);
 
-        Button btn = (Button)findViewById(R.id.listaSalasMenu);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(verSalas.this, Principal.class));
-                finish();
-            }
-        });
-
         //Comprabamos si se ha rellenado antes el singleton de museo para no volverlo ha hacer
         if(!museo.getCompleto()) {
             salas = new ArrayList<Sala>();

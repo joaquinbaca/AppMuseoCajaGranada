@@ -43,6 +43,10 @@
             android:windowSoftInputMode="adjustPan">
         </activity>
 
+        <activity android:name=".verRutas"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
         <activity android:name=".buscador">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />

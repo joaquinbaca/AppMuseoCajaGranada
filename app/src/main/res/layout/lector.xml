@@ -113,7 +113,6 @@
         android:id="@+id/menuInferior"
         android:layout_width="377dp"
         android:layout_height="96dp"
-        android:layout_marginBottom="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginStart="4dp"
         android:background="@color/common_google_signin_btn_text_dark_pressed"
@@ -159,6 +158,7 @@
             android:id="@+id/QR"
             android:layout_width="94dp"
             android:layout_height="match_parent"
+            android:background="@color/wallet_bright_foreground_disabled_holo_light"
             app:layout_constraintStart_toEndOf="@+id/Salas"
             tools:layout_editor_absoluteY="16dp">
 

@@ -71,6 +71,10 @@ public class Museo {
         this.completo = completo;
     }
 
+    public ArrayList<Ruta> getRutas(){
+        return rutas;
+    }
+
     public void setSalas(ArrayList<Sala> salas){
         this.salas=salas;
     }
@@ -272,11 +276,22 @@ public class Museo {
             ArrayList<Ruta> rutas = new ArrayList<Ruta>();
             Ruta ruta;
 
-            ResultSet rsRutas = conexion.hacerConsulta("SELECT * RUTA");
+            ResultSet rsRutas = conexion.hacerConsulta("SELECT * FROM RUTA");
             if(rsRutas.isBeforeFirst()){
                 while(rsRutas.next()){
+                    String idRuta = rsRutas.getString("idRuta");
+                    String nombreRuta = rsRutas.getString("nombre");
+                    String descripcionRuta = rsRutas.getString("descripcion");
+                    ArrayList<Elemento> elementosRuta = new ArrayList<Elemento>();
 
-                    ruta = new Ruta(null, "", "", "");
+                    ResultSet rsElementoRuta = conexion.hacerConsulta("SELECT * FROM `RUTA-ELEMENTO` WHERE idRuta='" + idRuta + "' ORDER BY orden ASC");
+                    if(rsElementoRuta.isBeforeFirst()){
+                        while(rsElementoRuta.next()){
+                            String idElemento = rsElementoRuta.getString("idElemento");
+                            elementosRuta.add(getElemento(idElemento));
+                        }
+                    }
+                    ruta = new Ruta(elementosRuta, nombreRuta, descripcionRuta, idRuta);
                     rutas.add(ruta);
                 }
             }

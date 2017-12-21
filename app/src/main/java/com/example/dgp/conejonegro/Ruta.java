@@ -29,7 +29,7 @@ public class Ruta {
         return descripcion;
     }
 
-    public String idRuta(){
+    public String getIdRuta(){
         return idRuta;
     }
 

@@ -5,34 +5,28 @@ package com.example.dgp.conejonegro;
  */
 public class Usuario {
     String  idioma = " ";
-    boolean subtitulos;
-    boolean audio;
     boolean lenguajeSimple;
     boolean lenguajeSignos;
     private static Usuario instance;
 
-    private Usuario(String idioma, boolean subtitulos, boolean lengSimple, boolean lengSignos, boolean audio){
-        this.idioma=idioma;
-        this.subtitulos=subtitulos;
-        this.audio=audio;
+    private Usuario(String idioma, boolean lengSimple, boolean lengSignos){
+        this.idioma=idioma;;
         this.lenguajeSignos=lengSignos;
         this.lenguajeSimple=lengSimple;
     }
 
-    private void setDatos(String idioma, boolean subtitulos, boolean lengSimple, boolean lengSignos, boolean audio){
+    private void setDatos(String idioma, boolean lengSimple, boolean lengSignos){
         this.idioma=idioma;
-        this.subtitulos=subtitulos;
-        this.audio=audio;
         this.lenguajeSignos=lengSignos;
         this.lenguajeSimple=lengSimple;
     }
 
-    public static void initInstance(String idioma, boolean subtitulos, boolean lengSimple, boolean lengSignos, boolean audio){
+    public static void initInstance(String idioma, boolean lengSimple, boolean lengSignos){
         //Este es para cargar por formulario y el otro de clase persistente
         if(instance == null)
-            instance = new Usuario(idioma, subtitulos, lengSimple, lengSignos, audio);
+            instance = new Usuario(idioma, lengSimple, lengSignos);
         else
-            instance.setDatos(idioma, subtitulos, lengSimple, lengSignos, audio);
+            instance.setDatos(idioma, lengSimple, lengSignos);
     }
 
     public static Usuario getInstance(){
@@ -49,14 +43,6 @@ public class Usuario {
 
     public boolean getLenguajeSignos(){
         return lenguajeSignos;
-    }
-
-    public boolean getSubtitulos(){
-        return subtitulos;
-    }
-
-    public boolean getSonido(){
-        return audio;
     }
 
 }

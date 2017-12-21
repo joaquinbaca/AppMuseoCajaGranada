@@ -27,43 +27,18 @@ public class verElemento extends AppCompatActivity{
 
    private String id;
    private Elemento elemento;
-   ConexionBD conexion = null;
-   private String imagen;
    VideoView videoView;
+   private Button botonListaSalas;
+   private Button botonQR;
+   private Button botonRutas;
+   private Button botonConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.elemento);
         id = getIntent().getExtras().getString("id");//Aqui recibe el id que carga el qr cuando se crea
-        Button btn = (Button)findViewById(R.id.qrConfiguracionBoton2);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(verElemento.this, Configuracion.class));
-                finish();
-            }
-        });
-        Button btn1 = (Button)findViewById(R.id.qrBotonQR2);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(verElemento.this, lector.class));
-                finish();
-            }
-        });
 
-        Button btn2 = (Button)findViewById(R.id.qrBotonSalas2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(verElemento.this, verSalas.class));
-                finish();
-            }
-        });
-
-
-        ///////////////////parte del video//////////
         videoView = (VideoView) findViewById(R.id.videoView);
 
         Uri uri = Uri.parse("http://webappmuseo.ddns.net:8742/videos/ILSEMedinaAzahara.mp4");
@@ -72,41 +47,9 @@ public class verElemento extends AppCompatActivity{
         videoView.requestFocus();
         videoView.start();
 
-        /////////////////////////////////////////////
-
-
-       /* try {
-            conexion = new ConexionBD();
-            ResultSet rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
-            rs.next();
-            String nombre = rs.getString("nombre");
-            rs = conexion.hacerConsulta("SELECT * FROM DESCRIPCION WHERE idElemento='"+id+"'");
-            rs.next();
-            String descripcion = rs.getString("texto");
-            rs = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='"+id+"'");
-            rs.next();
-            ResultSet rsmedio = conexion.hacerConsulta("SELECT * FROM MEDIO WHERE idElemento='"+id+"'");
-            String idMedio;
-            if(rsmedio.isBeforeFirst()) {
-                rsmedio.next();
-                idMedio = rsmedio.getString("idmedio");
-                ResultSet rsfoto = conexion.hacerConsulta("SELECT * FROM FOTO WHERE idElemento='"+idMedio+"'");
-                rsfoto.next();
-                imagen = rsfoto.getString("url");
-            }
-            else{
-                imagen = "http://webappmuseo.ddns.net:8742/images/noimage.png";
-            }
-            elemento = new Elemento(nombre, descripcion, imagen, id);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (java.sql.SQLException e) {
-            e.printStackTrace();
-        }
-*/
 
        Museo museo = Museo.getInstance();
-       Elemento elemento = museo.getElemento(id);
+       elemento = museo.getElemento(id);
 
        if(elemento != null) {
            TextView txtCambiado = (TextView) findViewById(R.id.elementoNombre);
@@ -128,6 +71,51 @@ public class verElemento extends AppCompatActivity{
                e.printStackTrace();
            }
        }
+
+       crearBotones();
+    }
+
+    public void crearBotones(){
+
+        botonListaSalas = (Button)findViewById(R.id.salaBotonSalas);
+
+        botonQR = (Button)findViewById(R.id.salaBotonQR);
+
+        botonRutas = (Button)findViewById(R.id.salasBotonRutas);
+
+        botonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
+
+        botonListaSalas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verElemento.this, verSalas.class));
+                finish();
+            }
+        });
+
+        botonConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verElemento.this, Configuracion.class));
+                finish();
+            }
+        });
+
+        botonQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verElemento.this, lector.class));
+                finish();
+            }
+        });
+
+        botonRutas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(Principal.this, Configuracion.class));
+                //finish();
+            }
+        });
     }
 
 }

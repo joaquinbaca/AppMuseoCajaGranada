@@ -18,111 +18,150 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
-        <Button
-            android:id="@+id/salasBotonRutas"
-            android:layout_width="58dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rutaicon"
-            app:layout_constraintBottom_toTopOf="@+id/principalTextoRutas"
-            app:layout_constraintEnd_toStartOf="@+id/salasconfiguracionBoton"
-            app:layout_constraintStart_toEndOf="@+id/salaBotonQR"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/salasconfiguracionBoton"
-            android:layout_width="54dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="13dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/config"
-            app:layout_constraintBottom_toTopOf="@+id/principalTexto"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/salasBotonRutas"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/principalTextoRutas"
-            android:layout_width="80dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:text="Rutas"
-            android:textAlignment="center"
-            android:textSize="10sp"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/Salas"
+            android:layout_width="95dp"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/principalTexto"
-            app:layout_constraintStart_toEndOf="@+id/principalTextoQR" />
-
-        <TextView
-            android:id="@+id/principalTexto"
-            android:layout_width="87dp"
-            android:layout_height="19dp"
-            android:layout_marginBottom="7dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="9dp"
-            android:text="Configuración"
-            android:textAlignment="center"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/principalTextoRutas" />
-
-        <TextView
-            android:id="@+id/principalTextoQR"
-            android:layout_width="76dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="8dp"
-            android:text="Lector QR"
-            android:textAlignment="center"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/principalTextoRutas"
-            app:layout_constraintStart_toEndOf="@+id/principalTextoSalas" />
-
-        <Button
-            android:id="@+id/salaBotonSalas"
-            android:layout_width="56dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginStart="29dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/salas"
-            app:layout_constraintBottom_toTopOf="@+id/principalTextoSalas"
-            app:layout_constraintEnd_toStartOf="@+id/salaBotonQR"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/salaBotonQR"
-            android:layout_width="57dp"
-            android:layout_height="48dp"
-            android:layout_marginBottom="12dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/qricon"
-            app:layout_constraintBottom_toTopOf="@+id/principalTextoQR"
-            app:layout_constraintEnd_toStartOf="@+id/salasBotonRutas"
-            app:layout_constraintStart_toEndOf="@+id/salaBotonSalas"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/salaBotonSalas"
+                android:layout_width="56dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/salas"
+                app:layout_constraintBottom_toTopOf="@+id/principalTextoSalas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/principalTextoSalas"
-            android:layout_width="82dp"
-            android:layout_height="18dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginStart="16dp"
-            android:text="Listar Salas"
-            android:textAlignment="center"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/principalTextoQR"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/principalTextoSalas"
+                android:layout_width="82dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="8dp"
+                android:text="Listar Salas"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/QR"
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@+id/Salas"
+            tools:layout_editor_absoluteY="16dp">
+
+            <Button
+                android:id="@+id/salaBotonQR"
+                android:layout_width="57dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/qricon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/principalTextoQR"
+                android:layout_width="76dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="9dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="11dp"
+                android:text="Lector QR"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/salaBotonQR" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/Rutas"
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toEndOf="@+id/QR"
+            tools:layout_editor_absoluteY="0dp">
+
+            <Button
+                android:id="@+id/salasBotonRutas"
+                android:layout_width="58dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/rutaicon"
+                app:layout_constraintBottom_toTopOf="@+id/principalTextoRutas"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/principalTextoRutas"
+                android:layout_width="80dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="7dp"
+                android:text="Rutas"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/Configuracion"
+            android:layout_width="94dp"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Rutas"
+            tools:layout_editor_absoluteY="16dp">
+
+            <Button
+                android:id="@+id/salasconfiguracionBoton"
+                android:layout_width="54dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="11dp"
+                android:background="@drawable/config"
+                app:layout_constraintBottom_toTopOf="@+id/principalTexto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/principalTexto"
+                android:layout_width="87dp"
+                android:layout_height="19dp"
+                android:layout_marginBottom="7dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:text="Configuración"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout

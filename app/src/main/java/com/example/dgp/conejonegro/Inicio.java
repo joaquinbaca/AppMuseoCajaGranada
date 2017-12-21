@@ -103,8 +103,8 @@ public class Inicio extends AppCompatActivity {
 
                             SharedPreferences config = getSharedPreferences("config", Context.MODE_PRIVATE);
                             if (config.contains("idioma")) {
-                                Usuario.initInstance(config.getString("idioma", "Español"), config.getBoolean("subtitulos", false), config.getBoolean("lenguajeSimple", false),
-                                        config.getBoolean("lenguajeSignos", false), config.getBoolean("sonido", false));
+                                Usuario.initInstance(config.getString("idioma", "Español"), config.getBoolean("lenguajeSimple", false),
+                                        config.getBoolean("lenguajeSignos", false));
                                 startActivity(new Intent(Inicio.this, Principal.class));
                             } else
                                 startActivity(new Intent(Inicio.this, Configuracion.class));

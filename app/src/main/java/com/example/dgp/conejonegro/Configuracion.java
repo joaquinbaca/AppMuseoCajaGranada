@@ -61,19 +61,15 @@ public class Configuracion extends AppCompatActivity implements Runnable{
 
     private void crearConfiguracion(){
         SharedPreferences config=getSharedPreferences("config", Context.MODE_PRIVATE);
-        boolean subtitulos = ((CheckBox)findViewById(R.id.Subtitulos)).isChecked();
         boolean lengSimple = ((CheckBox)findViewById(R.id.lenguajeSimple)).isChecked();
         boolean lengSignos = ((CheckBox)findViewById(R.id.lenguajeSignos)).isChecked();
-        boolean sonido = ((CheckBox)findViewById(R.id.Sonido)).isChecked();
         SharedPreferences.Editor editor = config.edit();
         editor.putString("idioma", idioma);
-        editor.putBoolean("subtitulos", subtitulos);
         editor.putBoolean("lenguajeSimple", lengSimple);
         editor.putBoolean("lenguajeSignos", lengSignos);
-        editor.putBoolean("sonido", sonido);
         editor.commit();
         Log.d("Sonido", idioma);
-        Usuario.initInstance(idioma,subtitulos,lengSimple,lengSignos,sonido);
+        Usuario.initInstance(idioma,lengSimple,lengSignos);
     }
 
     private void comprobarConfiguracion(){
@@ -83,10 +79,8 @@ public class Configuracion extends AppCompatActivity implements Runnable{
             ArrayAdapter myAdap = (ArrayAdapter) spinner.getAdapter();
             int spinnerPosition = myAdap.getPosition(usuario.getIdioma());
             spinner.setSelection(spinnerPosition);
-            ((CheckBox)findViewById(R.id.Subtitulos)).setChecked(usuario.getSubtitulos());
             ((CheckBox)findViewById(R.id.lenguajeSimple)).setChecked(usuario.getLenguajeSimple());
             ((CheckBox)findViewById(R.id.lenguajeSignos)).setChecked(usuario.getLenguajeSignos());
-            ((CheckBox)findViewById(R.id.Sonido)).setChecked(usuario.getSonido());
         }
     }
 
@@ -113,17 +107,11 @@ public class Configuracion extends AppCompatActivity implements Runnable{
         TextView mTextView = (TextView)findViewById(R.id.configuracionTextoIdioma);
         mTextView.setText(config.getString("configuracionTextoIdioma", "Idioma"));
 
-        TextView mTextView2 = (TextView)findViewById(R.id.configuracionTextoSubtitulos);
-        mTextView2.setText(config.getString("configuracionTextoSubtitulos", "Activar subtítulos"));
-
         TextView mTextView3 = (TextView)findViewById(R.id.configuracionTextoLenguajeSimple);
         mTextView3.setText(config.getString("configuracionTextoLenguajeSimple", "Activar lenguaje simple"));
 
         TextView mTextView4 = (TextView)findViewById(R.id.configuracionTextoLenguajeSignos);
         mTextView4.setText(config.getString("configuracionTextoLenguajeSignos", "Activar lenguaje de signos"));
-
-        TextView mTextView5 = (TextView)findViewById(R.id.configuracionTextoSonido);
-        mTextView5.setText(config.getString("configuracionTextoSonido", "Activar sonido"));
 
         traducirBotones();
     }

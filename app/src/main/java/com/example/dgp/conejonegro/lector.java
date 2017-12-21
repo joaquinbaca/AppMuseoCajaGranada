@@ -31,6 +31,11 @@ public class lector extends AppCompatActivity{
     /////------------///
     private String tokenanterior = "";
 
+    private Button botonListaSalas;
+    private Button botonQR;
+    private Button botonRutas;
+    private Button botonConfig;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,32 +45,7 @@ public class lector extends AppCompatActivity{
         cameraView = (SurfaceView) findViewById(R.id.camera_view);
         initQR();
 
-        Button btn = (Button)findViewById(R.id.VolverQR);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(lector.this, Principal.class));
-                finish();
-            }
-        });
-
-        Button btn1 = (Button)findViewById(R.id.lectorBotonSalas2);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(lector.this, verSalas.class));
-                finish();
-            }
-        });
-
-        Button btn2 = (Button)findViewById(R.id.lectorconfiguracionBoton2);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(lector.this, Configuracion.class));
-                finish();
-            }
-        });
+        crearBotones();
     }
     public void initQR() {
 
@@ -172,6 +152,49 @@ public class lector extends AppCompatActivity{
             }
         });
 
+    }
+
+    public void crearBotones(){
+
+        botonListaSalas = (Button)findViewById(R.id.salaBotonSalas);
+
+        botonQR = (Button)findViewById(R.id.salaBotonQR);
+
+        botonRutas = (Button)findViewById(R.id.salasBotonRutas);
+
+        botonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
+
+        botonListaSalas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(lector.this, verSalas.class));
+                finish();
+            }
+        });
+
+        botonConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(lector.this, Configuracion.class));
+                finish();
+            }
+        });
+
+        botonQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(lector.this, lector.class));
+                finish();
+            }
+        });
+
+        botonRutas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(Principal.this, Configuracion.class));
+                //finish();
+            }
+        });
     }
 
 }

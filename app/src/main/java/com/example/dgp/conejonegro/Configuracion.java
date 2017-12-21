@@ -254,8 +254,13 @@ public class Configuracion extends AppCompatActivity implements Runnable{
         botonRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Principal.this, Configuracion.class));
-                //finish();
+                progressDialog = ProgressDialog.show(Configuracion.this, "Cargando", "Descargando archivos del museo", true,
+                        false);
+
+                tipoHebra = 3;
+                objetivo = verRutas.class;
+                Thread thread = new Thread(Configuracion.this);
+                thread.start();
             }
         });
 

@@ -2,7 +2,9 @@ package com.example.dgp.conejonegro;
 
         import android.Manifest;
         import android.app.ProgressDialog;
+        import android.content.Context;
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.content.pm.PackageManager;
         import android.os.Build;
         import android.support.v4.app.ActivityCompat;
@@ -14,6 +16,7 @@ package com.example.dgp.conejonegro;
         import android.view.SurfaceView;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.TextView;
 
         import com.google.android.gms.vision.CameraSource;
         import com.google.android.gms.vision.Detector;
@@ -191,10 +194,29 @@ public class lector extends AppCompatActivity{
         botonRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Principal.this, Configuracion.class));
-                //finish();
+                startActivity(new Intent(lector.this, verRutas.class));
+                finish();
             }
         });
+
+        traducirInterfaz();
+    }
+
+    public void traducirInterfaz(){
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.principalTexto);
+        mTextView.setText(config.getString("principalTexto", "Configuración"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.principalTextoQR);
+        mTextView2.setText(config.getString("principalBotonQR", "Escanear QR"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.principalTextoRutas);
+        mTextView3.setText(config.getString("principalBotonRutas", "Ver Rutas"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.principalTextoSalas);
+        mTextView4.setText(config.getString("principalBotonSalas", "Ver Salas"));
+
     }
 
 }

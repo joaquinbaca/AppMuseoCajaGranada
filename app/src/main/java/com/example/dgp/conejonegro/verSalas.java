@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.sql.Array;
 import java.sql.ResultSet;
@@ -97,9 +98,28 @@ public class verSalas extends AppCompatActivity implements Runnable{
         botonRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Principal.this, Configuracion.class));
-                //finish();
+                startActivity(new Intent(verSalas.this, verRutas.class));
+                finish();
             }
         });
+
+        traducirInterfaz();
+    }
+
+    public void traducirInterfaz(){
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.principalTexto);
+        mTextView.setText(config.getString("principalTexto", "Configuración"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.principalTextoQR);
+        mTextView2.setText(config.getString("principalBotonQR", "Escanear QR"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.principalTextoRutas);
+        mTextView3.setText(config.getString("principalBotonRutas", "Ver Rutas"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.principalTextoSalas);
+        mTextView4.setText(config.getString("principalBotonSalas", "Ver Salas"));
+
     }
 }

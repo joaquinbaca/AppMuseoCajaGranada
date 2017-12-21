@@ -28,6 +28,7 @@ public class Museo {
 
     private Museo(String idioma, boolean lenguajeSimple, boolean lenguajeSignos) {
         salas=new ArrayList<Sala>();
+        rutas=new ArrayList<Ruta>();
         completo = false;
 
         ActualizarMuseo(idioma, lenguajeSimple, lenguajeSimple);

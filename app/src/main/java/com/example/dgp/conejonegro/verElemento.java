@@ -34,6 +34,8 @@ public class verElemento extends AppCompatActivity{
    private Button botonQR;
    private Button botonRutas;
    private Button botonConfig;
+   private boolean HayVideo = false;
+   private String video;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +45,13 @@ public class verElemento extends AppCompatActivity{
 
         videoView = (VideoView) findViewById(R.id.videoView);
 
-        Uri uri = Uri.parse("http://webappmuseo.ddns.net:8742/videos/ILSEMedinaAzahara.mp4");
-        videoView.setMediaController((new MediaController(this)));
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.start();
+        if(id.contains("1")) {
+            HayVideo = true;
+        }
+
+        if(!HayVideo){
+        videoView.setVisibility(View.INVISIBLE);}
+
 
 
        Museo museo = Museo.getInstance();
@@ -62,6 +66,13 @@ public class verElemento extends AppCompatActivity{
 
            ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
 
+           if(HayVideo){
+               Uri uri = Uri.parse("http://webappmuseo.ddns.net:8742/videos/ILSEMedinaAzahara.mp4");
+               videoView.setMediaController((new MediaController(this)));
+               videoView.setVideoURI(uri);
+               videoView.requestFocus();
+               videoView.start();
+           }
            URL imageUrl = null;
            try {
                imageUrl = new URL(elemento.getImagen());

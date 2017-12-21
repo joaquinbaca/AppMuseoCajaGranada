@@ -10,12 +10,18 @@ public class Elemento {
     private String descripcion;
     private String imagen;
     private String idElemento;
+    private String texto;
 
-    public Elemento(String nombre, String descripcion, String imagen, String idElemento){
+    public Elemento(String nombre, String descripcion, String imagen, String idElemento, String texto){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.imagen = imagen;
         this.idElemento = idElemento;
+        this.texto = texto;
+    }
+
+    public String getTexto(){
+        return texto;
     }
 
     public String getNombre(){

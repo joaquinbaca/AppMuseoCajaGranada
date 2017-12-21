@@ -32,8 +32,13 @@ public class Configuracion extends AppCompatActivity implements Runnable{
     ConexionBD conexion = null;
     private ProgressDialog progressDialog;
     private int tipoHebra;
-    ArrayList<String> idiomas;
-    ArrayAdapter<String> adapter;
+    private ArrayList<String> idiomas;
+    private ArrayAdapter<String> adapter;
+    private Button botonListaSalas;
+    private Button botonQR;
+    private Button botonRutas;
+    private Button botonConfig;
+    private Class objetivo;
 
 
     @Override
@@ -87,7 +92,7 @@ public class Configuracion extends AppCompatActivity implements Runnable{
 
     public void actualizarIdioma() throws SQLException, ClassNotFoundException {
 
-
+        Log.d("idioma",idioma);
         SharedPreferences config=getSharedPreferences("traducciones", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = config.edit();
         ResultSet rs = conexion.hacerConsulta("SELECT  idIdioma FROM IDIOMA WHERE nombre = '" + idioma + "'" );
@@ -120,8 +125,32 @@ public class Configuracion extends AppCompatActivity implements Runnable{
         TextView mTextView5 = (TextView)findViewById(R.id.configuracionTextoSonido);
         mTextView5.setText(config.getString("configuracionTextoSonido", "Activar sonido"));
 
-        Button button = (Button)findViewById(R.id.configuracionBoton);
-        button.setText(config.getString("configuracionBoton", "VOLVER"));
+        traducirBotones();
+    }
+
+    public void traducirBotones(){
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        botonListaSalas = (Button)findViewById(R.id.salaBotonSalas);
+
+        botonQR = (Button)findViewById(R.id.salaBotonQR);
+
+        botonRutas = (Button)findViewById(R.id.salasBotonRutas);
+
+        botonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
+
+        TextView mTextView = (TextView)findViewById(R.id.principalTexto);
+        mTextView.setText(config.getString("principalTexto", "Configuración"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.principalTextoQR);
+        mTextView2.setText(config.getString("principalBotonQR", "Escanear QR"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.principalTextoRutas);
+        mTextView3.setText(config.getString("principalBotonRutas", "Ver Rutas"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.principalTextoSalas);
+        mTextView4.setText(config.getString("principalBotonSalas", "Ver Salas"));
+
     }
 
 
@@ -140,6 +169,22 @@ public class Configuracion extends AppCompatActivity implements Runnable{
                 } catch (java.sql.SQLException e) {
                     e.printStackTrace();
                 }
+                break;
+            case 2:
+                try {
+                    actualizarIdioma();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case 3:
+                SharedPreferences config=getSharedPreferences("config", Context.MODE_PRIVATE);
+                boolean lengSimple = ((CheckBox)findViewById(R.id.lenguajeSimple)).isChecked();
+                boolean lengSignos = ((CheckBox)findViewById(R.id.lenguajeSignos)).isChecked();
+                Museo.getInstance(idioma, lengSimple, lengSignos);
+                break;
         }
         handler.sendEmptyMessage(0);
     }
@@ -147,7 +192,18 @@ public class Configuracion extends AppCompatActivity implements Runnable{
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            despuesDeCargar();
+            switch(tipoHebra){
+                case 1:
+                    despuesDeCargar();
+                    break;
+                case 2:
+                    actualizarPantalla();
+                    break;
+                case 3:
+                    startActivity(new Intent(Configuracion.this, objetivo));
+                    finish();
+                    break;
+            }
             progressDialog.dismiss();
         }
     };
@@ -164,15 +220,13 @@ public class Configuracion extends AppCompatActivity implements Runnable{
 
                 idioma = parent.getItemAtPosition(position).toString();
 
-                try {
-                    actualizarIdioma();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
 
-                actualizarPantalla();
+                progressDialog = ProgressDialog.show(Configuracion.this, "Cargando", "Aplicando idioma", true,
+                        false);
+
+                tipoHebra = 2;
+                Thread thread = new Thread(Configuracion.this);
+                thread.start();
 
             }
 
@@ -182,24 +236,43 @@ public class Configuracion extends AppCompatActivity implements Runnable{
             }
         });
 
-        comprobarConfiguracion();
-
-        Button btn = (Button)findViewById(R.id.configuracionBoton);
-        btn.setOnClickListener(new View.OnClickListener() {
+        botonListaSalas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Guardar en la clase de contenidos persistentes
-                crearConfiguracion();
+                progressDialog = ProgressDialog.show(Configuracion.this, "Cargando", "Descargando archivos del museo", true,
+                        false);
 
-                startActivity(new Intent(Configuracion.this, Principal.class));
-                try {
-                    conexion.cerrarBasedeDatos();
-                } catch (java.sql.SQLException e) {
-                    e.printStackTrace();
-                }
-                finish();
+                tipoHebra = 3;
+                objetivo = verSalas.class;
+                Thread thread = new Thread(Configuracion.this);
+                thread.start();
             }
         });
+
+        botonQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog = ProgressDialog.show(Configuracion.this, "Cargando", "Descargando archivos del museo", true,
+                        false);
+
+                tipoHebra = 3;
+                objetivo = lector.class;
+                Thread thread = new Thread(Configuracion.this);
+                thread.start();
+            }
+        });
+
+        botonRutas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //startActivity(new Intent(Principal.this, Configuracion.class));
+                //finish();
+            }
+        });
+
+
+        comprobarConfiguracion();
+
     }
 
 }

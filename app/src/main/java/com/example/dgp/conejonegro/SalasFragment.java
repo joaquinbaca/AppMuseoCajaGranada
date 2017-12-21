@@ -99,14 +99,12 @@ public class SalasFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 mSalasAdapter = new SalaAdapter(getActivity(), museo.getSalasFiltro(query));
                 mSalasList.setAdapter(mSalasAdapter);
-                return false;
+                return true;
             }
             @Override
             public boolean onQueryTextChange(String query)
             {
-                mSalasAdapter = new SalaAdapter(getActivity(), museo.getSalasFiltro(query));
-                mSalasList.setAdapter(mSalasAdapter);
-                return true;
+                return false;
             }
         });
     }

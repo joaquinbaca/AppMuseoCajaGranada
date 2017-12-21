@@ -65,14 +65,12 @@ public class ContenidoSalaFragment extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 mSalasAdapter = new ContenidoSalaAdapter(getActivity(), museo.getElementosFiltro(query, sala));
                 mSalasList.setAdapter(mSalasAdapter);
-                return false;
+                return true;
             }
             @Override
             public boolean onQueryTextChange(String query)
             {
-                mSalasAdapter = new ContenidoSalaAdapter(getActivity(), museo.getElementosFiltro(query, sala));
-                mSalasList.setAdapter(mSalasAdapter);
-                return true;
+                return false;
             }
         });
     }

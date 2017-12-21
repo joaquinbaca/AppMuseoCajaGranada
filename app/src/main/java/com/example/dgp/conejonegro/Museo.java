@@ -233,7 +233,7 @@ public class Museo {
                                         if(idTipoMedio.equals("3")){
                                             ResultSet rsVideo = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "' AND tipoVideo=1)");
                                             if(!rsVideo.isBeforeFirst()){
-                                                ResultSet rsVideo2 = conexion.hacerConsulta("SELECT * FROM TEXTO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "'AND tipoVideo=1)");
+                                                ResultSet rsVideo2 = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "'AND tipoVideo=1)");
                                                 if(rsVideo2.isBeforeFirst()){
                                                     rsVideo2.next();
                                                     url_video = rsVideo2.getString("url");

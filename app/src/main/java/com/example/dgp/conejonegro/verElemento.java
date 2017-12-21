@@ -58,7 +58,7 @@ public class verElemento extends AppCompatActivity{
            txtCambiado.setText(elemento.getNombre());
 
            txtCambiado = (TextView) findViewById(R.id.elementoTexto);
-           txtCambiado.setText(elemento.getDescripcion());
+           txtCambiado.setText(elemento.getTexto());
 
            ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
 

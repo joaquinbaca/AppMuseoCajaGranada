@@ -62,16 +62,16 @@ public class Principal extends AppCompatActivity {
     public void traducirInterfaz(){
         SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
 
-        buttonListaSalas = (Button)findViewById(R.id.principalBotonSalas);
+        buttonListaSalas = (Button)findViewById(R.id.salaBotonSalas);
        // buttonListaSalas.setText(config.getString("principalBotonSalas", "VER SALAS"));
 
-        button2 = (Button)findViewById(R.id.principalBotonQR);
+        button2 = (Button)findViewById(R.id.salaBotonQR);
        // button2.setText(config.getString("principalBotonQR", "ESCANEAR QR"));
 
-        Button button3 = (Button)findViewById(R.id.principalBotonRutas);
+        Button button3 = (Button)findViewById(R.id.salasBotonRutas);
        // button3.setText(config.getString("principalBotonRutas", "VER RUTAS"));
 
-        buttonConfig = (Button)findViewById(R.id.configuracionBoton);
+        buttonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
 
         TextView mTextView = (TextView)findViewById(R.id.principalTexto);
         mTextView.setText(config.getString("principalTexto", "Configuración"));

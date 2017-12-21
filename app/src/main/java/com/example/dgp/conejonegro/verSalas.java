@@ -36,6 +36,26 @@ public class verSalas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listasalas);
 
+        Button btn1 = (Button)findViewById(R.id.salaBotonQR);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verSalas.this, lector.class));
+                finish();
+            }
+        });
+
+        Button btn2 = (Button)findViewById(R.id.salasconfiguracionBoton);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verSalas.this, Configuracion.class));
+                finish();
+            }
+        });
+
+
+
         //Comprabamos si se ha rellenado antes el singleton de museo para no volverlo ha hacer
         if(!museo.getCompleto()) {
             salas = new ArrayList<Sala>();

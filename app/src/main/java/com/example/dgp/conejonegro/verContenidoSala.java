@@ -35,7 +35,23 @@ public class verContenidoSala extends AppCompatActivity{
         TextView tvNombreSala = (TextView)findViewById(R.id.NombreSala);
         ImageView foto = (ImageView) findViewById(R.id.foto);
 
+        Button btn1 = (Button)findViewById(R.id.salaBotonQR);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verContenidoSala.this, lector.class));
+                finish();
+            }
+        });
 
+        Button btn2 = (Button)findViewById(R.id.salasconfiguracionBoton);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verContenidoSala.this, Configuracion.class));
+                finish();
+            }
+        });
         Sala sala = Museo.getInstance().getSala(idZona);
 
         tvNombreSala.setText(sala.getNombre());

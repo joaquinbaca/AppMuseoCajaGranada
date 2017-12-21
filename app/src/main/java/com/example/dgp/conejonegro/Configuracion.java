@@ -82,7 +82,7 @@ public class Configuracion extends AppCompatActivity {
 
         comprobarConfiguracion();
 
-        Button btn = (Button)findViewById(R.id.configuracionBoton);
+        Button btn = (Button)findViewById(R.id.salasconfiguracionBoton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,7 +167,7 @@ public class Configuracion extends AppCompatActivity {
         TextView mTextView5 = (TextView)findViewById(R.id.configuracionTextoSonido);
         mTextView5.setText(config.getString("configuracionTextoSonido", "Activar sonido"));
 
-        Button button = (Button)findViewById(R.id.configuracionBoton);
+        Button button = (Button)findViewById(R.id.salasconfiguracionBoton);
         button.setText(config.getString("configuracionBoton", "VOLVER"));
     }
 }

@@ -19,19 +19,19 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView7">
 
         <Button
-            android:id="@+id/principalBotonRutas"
+            android:id="@+id/salasBotonRutas"
             android:layout_width="58dp"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rutaicon"
             app:layout_constraintBottom_toTopOf="@+id/principalTextoRutas"
-            app:layout_constraintEnd_toStartOf="@+id/configuracionBoton"
-            app:layout_constraintStart_toEndOf="@+id/principalBotonQR"
+            app:layout_constraintEnd_toStartOf="@+id/salasconfiguracionBoton"
+            app:layout_constraintStart_toEndOf="@+id/salaBotonQR"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/configuracionBoton"
+            android:id="@+id/salasconfiguracionBoton"
             android:layout_width="54dp"
             android:layout_height="48dp"
             android:layout_marginBottom="13dp"
@@ -41,7 +41,7 @@
             android:background="@drawable/config"
             app:layout_constraintBottom_toTopOf="@+id/principalTexto"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/principalBotonRutas"
+            app:layout_constraintStart_toEndOf="@+id/salasBotonRutas"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -81,7 +81,7 @@
             app:layout_constraintStart_toEndOf="@+id/principalTextoSalas" />
 
         <Button
-            android:id="@+id/principalBotonSalas"
+            android:id="@+id/salaBotonSalas"
             android:layout_width="56dp"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -90,12 +90,12 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/salas"
             app:layout_constraintBottom_toTopOf="@+id/principalTextoSalas"
-            app:layout_constraintEnd_toStartOf="@+id/principalBotonQR"
+            app:layout_constraintEnd_toStartOf="@+id/salaBotonQR"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/principalBotonQR"
+            android:id="@+id/salaBotonQR"
             android:layout_width="57dp"
             android:layout_height="48dp"
             android:layout_marginBottom="12dp"
@@ -103,8 +103,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/qricon"
             app:layout_constraintBottom_toTopOf="@+id/principalTextoQR"
-            app:layout_constraintEnd_toStartOf="@+id/principalBotonRutas"
-            app:layout_constraintStart_toEndOf="@+id/principalBotonSalas"
+            app:layout_constraintEnd_toStartOf="@+id/salasBotonRutas"
+            app:layout_constraintStart_toEndOf="@+id/salaBotonSalas"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

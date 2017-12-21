@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:id="@+id/configuracionBoton"
+        android:id="@+id/salasconfiguracionBoton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"
@@ -22,7 +22,7 @@
         android:layout_width="378dp"
         android:layout_height="323dp"
         android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/configuracionBoton"
+        app:layout_constraintBottom_toTopOf="@+id/salasconfiguracionBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 

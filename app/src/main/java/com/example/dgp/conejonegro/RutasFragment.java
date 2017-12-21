@@ -69,15 +69,13 @@ public class RutasFragment extends Fragment{
         mRutasList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                /*
                 Ruta ruta = mRutasAdapter.getItem(position);
-                Intent shareIntent = new Intent(getActivity(), verContenidoRuta.class);
+                Intent shareIntent = new Intent(getActivity(), verElementosRuta.class);
                 shareIntent.setAction(Intent.ACTION_SEND);
-                shareIntent.putExtra("id", ruta.getIdRuta());
+                shareIntent.putExtra("id", "2");
                 shareIntent.setType("text/plain");
                 startActivity(shareIntent);
                 getActivity().finish();
-                */
             }
         });
 

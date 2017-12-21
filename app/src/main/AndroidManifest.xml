@@ -32,6 +32,9 @@
         <activity android:name=".Configuracion">
         </activity>
 
+        <activity android:name=".verElementosRuta">
+        </activity>
+
         <activity android:name=".Principal">
         </activity>
 

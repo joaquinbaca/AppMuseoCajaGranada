@@ -18,6 +18,7 @@ public class Principal extends AppCompatActivity {
     Button button2;
     Button buttonConfig;
     Button buttonListaSalas;
+    Button button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,14 @@ public class Principal extends AppCompatActivity {
                 finish();
             }
         });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Principal.this, verRutas.class));
+                finish();
+            }
+        });
     }
 
     public void traducirInterfaz(){
@@ -58,7 +67,7 @@ public class Principal extends AppCompatActivity {
 
         button2 = (Button)findViewById(R.id.salaBotonQR);
 
-        Button button3 = (Button)findViewById(R.id.salasBotonRutas);
+        button3 = (Button)findViewById(R.id.salasBotonRutas);
 
         buttonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
 

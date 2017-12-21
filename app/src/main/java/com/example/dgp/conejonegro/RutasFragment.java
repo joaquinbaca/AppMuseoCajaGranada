@@ -32,7 +32,7 @@ public class RutasFragment extends Fragment{
     // TODO: Rename and change types of parameters
 
 
-    private SalasFragment.OnFragmentInteractionListener mListener;
+    private RutasFragment.OnFragmentInteractionListener mListener;
 
     public RutasFragment() {
         // Required empty public constructor

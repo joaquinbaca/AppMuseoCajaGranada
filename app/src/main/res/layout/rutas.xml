@@ -49,7 +49,7 @@
 
     <include
         android:id="@+id/include2"
-        layout="@layout/container_salas" />
+        layout="@layout/container_rutas" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/menuInferior"

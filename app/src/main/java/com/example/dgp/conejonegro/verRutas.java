@@ -35,6 +35,7 @@ public class verRutas extends AppCompatActivity implements Runnable{
         thread.start();
     }
 
+    @Override
     public void run() {
         SharedPreferences config=getSharedPreferences("config", Context.MODE_PRIVATE);
         String idioma = config.getString("idioma","Español");

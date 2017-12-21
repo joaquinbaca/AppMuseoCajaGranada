@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,10 @@ import java.util.ArrayList;
 public class verRutas extends AppCompatActivity implements Runnable{
     Museo museo;
     private ProgressDialog progressDialog;
+    private Button botonListaSalas;
+    private Button botonQR;
+    private Button botonRutas;
+    private Button botonConfig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -60,6 +65,56 @@ public class verRutas extends AppCompatActivity implements Runnable{
     };
 
     public void crearBotones(){
+
+        botonListaSalas = (Button)findViewById(R.id.salaBotonSalas);
+
+        botonQR = (Button)findViewById(R.id.salaBotonQR);
+
+        botonRutas = (Button)findViewById(R.id.salasBotonRutas);
+
+        botonConfig = (Button)findViewById(R.id.salasconfiguracionBoton);
+
+        botonConfig.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verRutas.this, Configuracion.class));
+                finish();
+            }
+        });
+
+        botonQR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verRutas.this, lector.class));
+                finish();
+            }
+        });
+
+        botonListaSalas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(verRutas.this, verSalas.class));
+                finish();
+            }
+        });
+
+        traducirInterfaz();
+    }
+
+    public void traducirInterfaz(){
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.principalTexto);
+        mTextView.setText(config.getString("principalTexto", "Configuración"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.principalTextoQR);
+        mTextView2.setText(config.getString("principalBotonQR", "Escanear QR"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.principalTextoRutas);
+        mTextView3.setText(config.getString("principalBotonRutas", "Ver Rutas"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.principalTextoSalas);
+        mTextView4.setText(config.getString("principalBotonSalas", "Ver Salas"));
 
     }
 }

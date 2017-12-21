@@ -4,7 +4,9 @@ package com.example.dgp.conejonegro;
  * Created by joaqu on 29/10/2017.
  */
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -112,10 +114,28 @@ public class verElemento extends AppCompatActivity{
         botonRutas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(Principal.this, Configuracion.class));
-                //finish();
+                startActivity(new Intent(verElemento.this, verRutas.class));
+                finish();
             }
         });
+        traducirInterfaz();
+    }
+
+    public void traducirInterfaz(){
+        SharedPreferences config = getSharedPreferences("traducciones", Context.MODE_PRIVATE);
+
+        TextView mTextView = (TextView)findViewById(R.id.principalTexto);
+        mTextView.setText(config.getString("principalTexto", "Configuración"));
+
+        TextView mTextView2 = (TextView)findViewById(R.id.principalTextoQR);
+        mTextView2.setText(config.getString("principalBotonQR", "Escanear QR"));
+
+        TextView mTextView3 = (TextView)findViewById(R.id.principalTextoRutas);
+        mTextView3.setText(config.getString("principalBotonRutas", "Ver Rutas"));
+
+        TextView mTextView4 = (TextView)findViewById(R.id.principalTextoSalas);
+        mTextView4.setText(config.getString("principalBotonSalas", "Ver Salas"));
+
     }
 
 }

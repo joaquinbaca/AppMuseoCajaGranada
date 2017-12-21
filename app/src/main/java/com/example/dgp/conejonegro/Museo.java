@@ -99,7 +99,7 @@ public class Museo {
             salas_elegidas=salas;
         else {
             for (Sala s : salas) {
-                if (s.getNombre().contains(query.toLowerCase()) || s.getDescripcion().contains(query.toLowerCase()) || query.toLowerCase().equals(s.getDescripcion())|| query.toLowerCase().equals(s.getNombre().toLowerCase()) )
+                if (s.getNombre().toLowerCase().contains(query.toLowerCase()) || s.getDescripcion().toLowerCase().contains(query.toLowerCase()) || query.toLowerCase().equals(s.getDescripcion().toLowerCase())|| query.toLowerCase().equals(s.getNombre().toLowerCase()) )
                     salas_elegidas.add(s);
                 Log.v(s.getIdZona(), s.getNombre().toLowerCase());
                 Log.v("query", query.toLowerCase());
@@ -122,7 +122,7 @@ public class Museo {
         ArrayList<Elemento> elementos = sala.getElementos();
         ArrayList<Elemento> resultados = new ArrayList<>();
         for(Elemento e : elementos){
-            if(e.getNombre().contains(query.toLowerCase()) || e.getDescripcion().contains(query.toLowerCase()) || query.toLowerCase().equals(e.getDescripcion())|| query.toLowerCase().equals(e.getNombre().toLowerCase()) )
+            if(e.getNombre().toLowerCase().contains(query.toLowerCase()) || e.getDescripcion().toLowerCase().contains(query.toLowerCase()) || query.toLowerCase().equals(e.getDescripcion().toLowerCase())|| query.toLowerCase().equals(e.getNombre().toLowerCase()) )
                 resultados.add(e);
         }
         return resultados;

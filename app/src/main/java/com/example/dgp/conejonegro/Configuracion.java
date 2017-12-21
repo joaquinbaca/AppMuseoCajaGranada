@@ -180,9 +180,10 @@ public class Configuracion extends AppCompatActivity implements Runnable{
                 }
                 break;
             case 3:
+                crearConfiguracion();
                 SharedPreferences config=getSharedPreferences("config", Context.MODE_PRIVATE);
-                boolean lengSimple = ((CheckBox)findViewById(R.id.lenguajeSimple)).isChecked();
-                boolean lengSignos = ((CheckBox)findViewById(R.id.lenguajeSignos)).isChecked();
+                boolean lengSimple = config.getBoolean("lenguajeSimple", false);
+                boolean lengSignos = config.getBoolean("lenguajeSignos", false);
                 Museo.getInstance(idioma, lengSimple, lengSignos);
                 break;
         }

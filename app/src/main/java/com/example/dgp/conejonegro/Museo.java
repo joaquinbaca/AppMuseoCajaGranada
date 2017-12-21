@@ -274,7 +274,7 @@ public class Museo {
             }
 
 
-            ArrayList<Ruta> rutas = new ArrayList<Ruta>();
+            rutas = new ArrayList<Ruta>();
             Ruta ruta;
 
             ResultSet rsRutas = conexion.hacerConsulta("SELECT * FROM RUTA");

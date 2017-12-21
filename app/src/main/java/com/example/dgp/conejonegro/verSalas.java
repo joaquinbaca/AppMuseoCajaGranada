@@ -52,7 +52,7 @@ public class verSalas extends AppCompatActivity {
         });
 
 
-
+        /*
         //Comprabamos si se ha rellenado antes el singleton de museo para no volverlo ha hacer
         if(!museo.getCompleto()) {
             salas = new ArrayList<Sala>();
@@ -131,7 +131,7 @@ public class verSalas extends AppCompatActivity {
             }
             museo.setSalas(salas);
             museo.setCompleto(true);
-        }
+        }*/
         SalasFragment salasFragment = (SalasFragment) getSupportFragmentManager().findFragmentById(R.id.salas_container);
         if (salasFragment == null) {
             salasFragment = SalasFragment.newInstance();

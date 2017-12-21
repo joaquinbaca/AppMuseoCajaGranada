@@ -25,11 +25,9 @@ public class Inicio extends AppCompatActivity {
 
     Button button;
     EditText mEdit;
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        progressDialog= new ProgressDialog(this);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         super.onCreate(savedInstanceState);
@@ -64,8 +62,6 @@ public class Inicio extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Iniciado sesión");
-                progressDialog.show();
 
                 mEdit = (EditText) findViewById(R.id.inicioCodigo);
                 String contenido = mEdit.getText().toString();

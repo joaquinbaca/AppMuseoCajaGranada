@@ -28,11 +28,8 @@ public class verSalas extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     private ListView list;
 
-    private ProgressDialog progressDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listasalas);
 

@@ -30,12 +30,10 @@ public class lector extends AppCompatActivity{
     private String token = "";
     /////------------///
     private String tokenanterior = "";
-    private ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        progressDialog= new ProgressDialog(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lector);
 
@@ -46,8 +44,6 @@ public class lector extends AppCompatActivity{
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Cargando");
-                progressDialog.show();
                 startActivity(new Intent(lector.this, Principal.class));
                 finish();
             }
@@ -57,8 +53,6 @@ public class lector extends AppCompatActivity{
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Cargando");
-                progressDialog.show();
                 startActivity(new Intent(lector.this, verSalas.class));
                 finish();
             }
@@ -68,8 +62,6 @@ public class lector extends AppCompatActivity{
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Cargando");
-                progressDialog.show();
                 startActivity(new Intent(lector.this, Configuracion.class));
                 finish();
             }

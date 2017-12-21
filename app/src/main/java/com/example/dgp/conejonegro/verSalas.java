@@ -112,7 +112,7 @@ public class verSalas extends AppCompatActivity {
                                     }
                                 }
                             }
-                            Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto, idElemento, "");
+                            Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto, idElemento, "", "");
                             elementos.add(e);
                         }
                     }

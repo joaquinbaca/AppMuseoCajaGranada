@@ -162,6 +162,7 @@ public class Museo {
                         String descripcionElemento = "";
                         String url_foto = "http://webappmuseo.ddns.net:8742/images/noimage.png";
                         String textoElemento = "";
+                        String url_video = "";
 
                         ResultSet rsElemento = conexion.hacerConsulta("SELECT * FROM ELEMENTO WHERE idElemento='" + idElemento + "'");
                         if (rsElemento.isBeforeFirst()) {
@@ -188,7 +189,7 @@ public class Museo {
                                         String idTipoMedio = rsMedio.getString("idTipoMedio");
 
                                         if(idTipoMedio.equals("1") && lenguajeSimple){
-                                            ResultSet rsTextoSimple = conexion.hacerConsulta("SELECT * FROM TEXTOSIMPLIFICADO WHERE idMedio='" + idMedio + "'");
+                                            ResultSet rsTextoSimple = conexion.hacerConsulta("SELECT * FROM TEXTOSIMPLIFICADO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "')");
                                             if (rsTextoSimple.isBeforeFirst()) {
                                                 rsTextoSimple.next();
                                                 textoElemento = rsTextoSimple.getString("texto");
@@ -196,11 +197,41 @@ public class Museo {
                                         }
 
                                         if(idTipoMedio.equals("2") && textoElemento.equals("")){
-
-
+                                            ResultSet rsTextoNormal = conexion.hacerConsulta("SELECT * FROM TEXTO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "')");
+                                            if(!rsTextoNormal.isBeforeFirst()){
+                                                ResultSet rsTextoNormal2 = conexion.hacerConsulta("SELECT * FROM TEXTO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "')");
+                                                if(rsTextoNormal2.isBeforeFirst()){
+                                                    rsTextoNormal2.next();
+                                                    textoElemento = rsTextoNormal2.getString("texto");
+                                                }
+                                            }
+                                            else{
+                                                rsTextoNormal.next();
+                                                textoElemento = rsTextoNormal.getString("texto");
+                                            }
                                         }
 
                                         if(idTipoMedio.equals("3")){
+                                            ResultSet rsVideo = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "' AND tipoVideo=1)");
+                                            if(!rsVideo.isBeforeFirst()){
+                                                ResultSet rsVideo2 = conexion.hacerConsulta("SELECT * FROM TEXTO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "'AND tipoVideo=1)");
+                                                if(rsVideo2.isBeforeFirst()){
+                                                    rsVideo2.next();
+                                                    url_video = rsVideo2.getString("url");
+                                                }
+                                            }
+                                            else{
+                                                rsVideo.next();
+                                                url_video  = rsVideo.getString("url");
+                                            }
+
+                                            if(lenguajeSignos){
+                                                ResultSet rsVideo3 = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "'AND tipoVideo=2)");
+                                                if(rsVideo3.isBeforeFirst()){
+                                                    rsVideo3.next();
+                                                    url_video = rsVideo3.getString("url");
+                                                }
+                                            }
 
                                         }
 
@@ -215,7 +246,7 @@ public class Museo {
                                 }
                             }
                         }
-                        Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto, idElemento, textoElemento);
+                        Elemento e = new Elemento(nombreElemento, descripcionElemento, url_foto, idElemento, textoElemento, url_video);
                         elementos.add(e);
                     }
                 }

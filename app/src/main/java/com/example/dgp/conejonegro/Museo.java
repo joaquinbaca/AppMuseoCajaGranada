@@ -17,9 +17,11 @@ public class Museo {
     private String idioma;
     private boolean lenguajeSimple;
     private boolean lenguajeSignos;
+    private ArrayList<Ruta> rutas;
 
     private Museo() {
         salas=new ArrayList<Sala>();
+        rutas=new ArrayList<Ruta>();
         completo = false;
         ActualizarMuseo("Español", false, false);
     }
@@ -42,11 +44,23 @@ public class Museo {
         if(instance == null)
             instance = new Museo(idioma, lenguajeSimple, lenguajeSimple);
         else{
-            if(!instance.idioma.equals(idioma) || !instance.lenguajeSimple || lenguajeSimple || !instance.lenguajeSignos == lenguajeSignos){
+            if(!instance.getIdioma().equals(idioma) || instance.getLenguajeSimple() != lenguajeSimple || instance.getLenguajeSignos() != lenguajeSignos){
                 instance.ActualizarMuseo(idioma, lenguajeSimple, lenguajeSignos);
             }
         }
         return instance;
+    }
+
+    public String getIdioma(){
+        return idioma;
+    }
+
+    public boolean getLenguajeSimple(){
+        return lenguajeSimple;
+    }
+
+    public boolean getLenguajeSignos(){
+        return lenguajeSignos;
     }
 
     public boolean getCompleto(){
@@ -253,6 +267,21 @@ public class Museo {
                 s = new Sala(elementos, planta, nombre, descripcionSala, imagen, idZona);
                 salas.add(s);
             }
+
+
+            ArrayList<Ruta> rutas = new ArrayList<Ruta>();
+            Ruta ruta;
+
+            ResultSet rsRutas = conexion.hacerConsulta("SELECT * RUTA");
+            if(rsRutas.isBeforeFirst()){
+                while(rsRutas.next()){
+
+                    ruta = new Ruta(null, "", "", "");
+                    rutas.add(ruta);
+                }
+            }
+
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (java.sql.SQLException e) {

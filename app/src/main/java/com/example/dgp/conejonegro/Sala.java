@@ -1,5 +1,11 @@
 package com.example.dgp.conejonegro;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +17,7 @@ public class Sala {
     private String nombre;
     private String descripcion, imagen;
     private String idZona;
+    private Bitmap loadedImage;
 
     Sala(ArrayList<Elemento> elementos, int planta, String nombre, String descripcion, String imagen, String idZona){
         this.elementos = new ArrayList();
@@ -20,6 +27,19 @@ public class Sala {
         this.imagen = imagen;
         this.descripcion = descripcion;
         this.idZona = idZona;
+        URL imageUrl = null;
+        try {
+            imageUrl = new URL(getImagen());
+            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
+            conn.connect();
+            loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Bitmap getBitmap(){
+        return loadedImage;
     }
 
     public String getIdZona(){

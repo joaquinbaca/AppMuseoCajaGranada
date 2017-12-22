@@ -53,17 +53,8 @@ public class SalaAdapter extends ArrayAdapter<Sala>{
         //Glide.with(getContext()).load(sala.getImage()).into(foto);
         nombre.setText(sala.getNombre());
         descripcion.setText(sala.getDescripcion());
-
-        URL imageUrl = null;
-        try {
-            imageUrl = new URL(sala.getImagen());
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.connect();
-            Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-            foto.setImageBitmap(loadedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Bitmap loadedImage = sala.getBitmap();
+        foto.setImageBitmap(loadedImage);
 
         return convertView;
     }

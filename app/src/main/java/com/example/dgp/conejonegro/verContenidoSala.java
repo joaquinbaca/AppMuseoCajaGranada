@@ -45,16 +45,8 @@ public class verContenidoSala extends AppCompatActivity{
 
         tvNombreSala.setText(sala.getNombre());
 
-        URL imageUrl = null;
-        try {
-            imageUrl = new URL(sala.getImagen());
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.connect();
-            Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-            foto.setImageBitmap(loadedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Bitmap loadedImage = sala.getBitmap();
+        foto.setImageBitmap(loadedImage);
 
         ContenidoSalaFragment salasFragment = (ContenidoSalaFragment) getSupportFragmentManager().findFragmentById(R.id.contenido_sala_container);
         if (salasFragment == null) {

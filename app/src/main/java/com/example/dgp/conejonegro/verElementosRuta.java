@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,37 +40,40 @@ public class verElementosRuta extends AppCompatActivity{
         setContentView(R.layout.elementosruta);
         id = getIntent().getExtras().getString("id");//Aqui recibe el id que carga el qr cuando se crea
 
-        videoView = (VideoView) findViewById(R.id.videoView);
-
-        Uri uri = Uri.parse("http://webappmuseo.ddns.net:8742/videos/ILSEMedinaAzahara.mp4");
-        videoView.setMediaController((new MediaController(this)));
-        videoView.setVideoURI(uri);
-        videoView.requestFocus();
-        videoView.start();
-
-
         Museo museo = Museo.getInstance();
         elemento = museo.getElemento(id);
 
         if(elemento != null) {
+
+            videoView = (VideoView) findViewById(R.id.videoView);
+
+            String video = elemento.getVideo();
+            if(video.trim().isEmpty()) {
+                videoView.setVisibility(View.INVISIBLE);
+                if (!elemento.getImagen().trim().isEmpty()) {
+                    ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
+                    Bitmap loadedImage = elemento.getBitmap();
+                    foto.setImageBitmap(loadedImage);
+
+                }else{
+                    ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
+                    elemento.setImagen("http://webappmuseo.ddns.net:8742/images/noimage.png");
+                    Bitmap loadedImage = elemento.getBitmap();
+                    foto.setImageBitmap(loadedImage);
+                }
+            }else {
+                Uri uri = Uri.parse(video);
+                videoView.setMediaController((new MediaController(this)));
+                videoView.setVideoURI(uri);
+                videoView.requestFocus();
+                videoView.start();
+            }
+
             TextView txtCambiado = (TextView) findViewById(R.id.elementoNombre);
             txtCambiado.setText(elemento.getNombre());
 
             txtCambiado = (TextView) findViewById(R.id.elementoTexto);
-            txtCambiado.setText(elemento.getDescripcion());
-
-            ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
-
-            URL imageUrl = null;
-            try {
-                imageUrl = new URL(elemento.getImagen());
-                HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-                conn.connect();
-                Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-                foto.setImageBitmap(loadedImage);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            txtCambiado.setText(elemento.getTexto());
         }
 
         crearBotones();

@@ -52,16 +52,8 @@ public class ContenidoSalaAdapter extends ArrayAdapter<Elemento> {
         nombre.setText(elemento.getNombre());
         descripcion.setText(elemento.getDescripcion());
 
-        URL imageUrl = null;
-        try {
-            imageUrl = new URL(elemento.getImagen());
-            HttpURLConnection conn = (HttpURLConnection) imageUrl.openConnection();
-            conn.connect();
-            Bitmap loadedImage = BitmapFactory.decodeStream(conn.getInputStream());
-            foto.setImageBitmap(loadedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Bitmap loadedImage = elemento.getBitmap();
+        foto.setImageBitmap(loadedImage);
 
         return convertView;
     }

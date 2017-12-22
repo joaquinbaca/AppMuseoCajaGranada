@@ -99,6 +99,7 @@ public class ContenidoSalaFragment extends Fragment {
                 shareIntent.putExtra("id", elemento.getIdElemento());
                 shareIntent.setType("text/plain");
                 startActivity(shareIntent);
+                getActivity().finish();
             }
         });
 

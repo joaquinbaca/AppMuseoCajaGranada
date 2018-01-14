@@ -230,7 +230,7 @@ public class Museo {
                                             }
                                         }
 
-                                        if(idTipoMedio.equals("3")){
+                                        if(idTipoMedio.equals("4")){
                                             ResultSet rsVideo = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "' AND tipoVideo=1)");
                                             if(!rsVideo.isBeforeFirst()){
                                                 ResultSet rsVideo2 = conexion.hacerConsulta("SELECT * FROM VIDEO WHERE (idMedio='" + idMedio + "' AND idIdioma='" + idIdioma + "'AND tipoVideo=1)");
@@ -254,7 +254,7 @@ public class Museo {
 
                                         }
 
-                                        if(idTipoMedio.equals("4")){
+                                        if(idTipoMedio.equals("3")){
                                             ResultSet rsFoto = conexion.hacerConsulta("SELECT * FROM FOTO WHERE idMedio='" + idMedio + "'");
                                             if (rsFoto.isBeforeFirst()) {
                                                 rsFoto.next();

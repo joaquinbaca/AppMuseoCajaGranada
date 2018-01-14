@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -76,10 +77,12 @@ public class verElemento extends AppCompatActivity{
            TextView txtCambiado = (TextView) findViewById(R.id.elementoNombre);
            txtCambiado.setText(elemento.getNombre());
 
+
            Log.d("Imange",elemento.getImagen());
 
            txtCambiado = (TextView) findViewById(R.id.elementoTexto);
            txtCambiado.setText(elemento.getTexto());
+           txtCambiado.setMovementMethod(new ScrollingMovementMethod());
        }
 
        crearBotones();

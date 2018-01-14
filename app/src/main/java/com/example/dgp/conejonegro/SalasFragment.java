@@ -104,7 +104,9 @@ public class SalasFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String query)
             {
-                return false;
+                mSalasAdapter = new SalaAdapter(getActivity(), museo.getSalasFiltro(query));
+                mSalasList.setAdapter(mSalasAdapter);
+                return true;
             }
         });
     }

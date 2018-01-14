@@ -70,7 +70,9 @@ public class ContenidoSalaFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String query)
             {
-                return false;
+                mSalasAdapter = new ContenidoSalaAdapter(getActivity(), museo.getElementosFiltro(query, sala));
+                mSalasList.setAdapter(mSalasAdapter);
+                return true;
             }
         });
     }

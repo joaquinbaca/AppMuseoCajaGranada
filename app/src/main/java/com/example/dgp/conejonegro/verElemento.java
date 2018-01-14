@@ -56,6 +56,7 @@ public class verElemento extends AppCompatActivity{
                if (!elemento.getImagen().trim().isEmpty()) {
                    ImageView foto = (ImageView) findViewById(R.id.elementoImagen);
                    Bitmap loadedImage = elemento.getBitmap();
+                   Log.d("Imange 1",elemento.getImagen());
                    foto.setImageBitmap(loadedImage);
 
                }else{
@@ -74,6 +75,8 @@ public class verElemento extends AppCompatActivity{
 
            TextView txtCambiado = (TextView) findViewById(R.id.elementoNombre);
            txtCambiado.setText(elemento.getNombre());
+
+           Log.d("Imange",elemento.getImagen());
 
            txtCambiado = (TextView) findViewById(R.id.elementoTexto);
            txtCambiado.setText(elemento.getTexto());

@@ -2,6 +2,7 @@ package com.example.dgp.conejonegro;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -37,6 +38,10 @@ public class Elemento {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Log.d("Elemento: ", nombre);
+        Log.d("Desc: ", descripcion);
+        Log.d("Im: ", imagen);
+        Log.d("Vid: ", video);
     }
 
     public void setImagen(String imagen){

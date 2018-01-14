@@ -68,6 +68,7 @@ public class verElemento extends AppCompatActivity{
                }
            }else {
                Uri uri = Uri.parse(video);
+               videoView.setVisibility(View.VISIBLE);
                videoView.setMediaController((new MediaController(this)));
                videoView.setVideoURI(uri);
                videoView.requestFocus();

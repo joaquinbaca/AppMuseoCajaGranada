@@ -8,12 +8,14 @@
 
     <TextView
         android:id="@+id/NombreSala"
-        android:layout_width="143dp"
-        android:layout_height="40dp"
+        android:layout_width="228dp"
+        android:layout_height="61dp"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="300dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
+        android:autoSizeTextType="uniform"
+        android:textAlignment="center"
         android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/include"

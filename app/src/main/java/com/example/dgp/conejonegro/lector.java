@@ -23,6 +23,7 @@ package com.example.dgp.conejonegro;
         import com.google.android.gms.vision.barcode.Barcode;
         import com.google.android.gms.vision.barcode.BarcodeDetector;
         import java.io.IOException;
+        import java.util.regex.Pattern;
 
 public class lector extends AppCompatActivity{
     private CameraSource cameraSource;
@@ -124,15 +125,18 @@ public class lector extends AppCompatActivity{
 
                         // guardamos el ultimo token proceado
                         tokenanterior = token;
-                        Log.i("token", token);
+                        String[] partes = token.split("/");
+                        String separador = Pattern.quote(".");
+                        partes = partes[partes.length-1].split(separador);
 
 
-                            Intent shareIntent = new Intent(lector.this, elemento.getClass());
-                            shareIntent.setAction(Intent.ACTION_SEND);
-                            shareIntent.putExtra("id", token);
-                            shareIntent.setType("text/plain");
-                            startActivity(shareIntent);
-                            finish();
+
+                        Intent shareIntent = new Intent(lector.this, elemento.getClass());
+                        shareIntent.setAction(Intent.ACTION_SEND);
+                        shareIntent.putExtra("id", partes[0]);
+                        shareIntent.setType("text/plain");
+                        startActivity(shareIntent);
+                        finish();
 
                         new Thread(new Runnable() {
                             public void run() {
